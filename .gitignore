@@ -207,3 +207,9 @@ cover/
 # Cython debug symbols
 cython_debug/
 
+# DATA
+*.pickle
+*.csv
+
+# Intelij
+xai-survey.iml
