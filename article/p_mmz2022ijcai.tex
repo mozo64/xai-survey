@@ -36,12 +36,12 @@
 
 %%
 %% This command is for the conference information
-\conference{Woodstock'22: Symposium on the irreproducible science,
-  June 07--11, 2022, Woodstock, NY}
+\conference{IJCAI-ECAI 2022, the 31st International Joint Conference on Artificial Intelligence and the 25th European Conference on Artificial Intelligence, July 23-29, 2022
+Messe Wien, Vienna, Austria}
 
 %%
 %% The "title" command
-\title{Explanation of clusters with NLU}
+\title{Understand your clusters: a link between the data and metadata}
 
 \tnotemark[1]
 \tnotetext[1]{You can use this document as the template for preparing your
@@ -69,14 +69,6 @@ url=https://kmitd.github.io/ilaria/,
 ]
 \fnmark[1]
 \address[3]{Vrije Universiteit Amsterdam, De Boelelaan 1105, 1081 HV Amsterdam, The Netherlands}
-
-\author[4]{Manfred Jeusfeld}[%
-orcid=0000-0002-9421-8566,
-email=Manfred.Jeusfeld@acm.org,
-url=http://conceptbase.sourceforge.net/mjf/,
-]
-\fnmark[1]
-\address[4]{University of Skövde, Högskolevägen 1, 541 28 Skövde, Sweden}
 
 %% Footnotes
 \cortext[1]{Corresponding author.}
@@ -113,21 +105,48 @@ url=http://conceptbase.sourceforge.net/mjf/,
 
 \section{Introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
-
+- classification as a tool for understanding
+- the problem is common in fields like: marketing, e-commerce, industries, ???
+- one like to classify "objective" data like images, sensors, etc to uncover hidden structure
+   - to many observations to do it manually
+- the difficulty arises to explain what algorithm has learned and if it is of any value
+- explanations needs to be done with data comprehensible by humans
+  - images - OK, but not always (vide images of medical images, satellites,  etc)
+  - industrial data - rarely
+  - thus "metadata" - link between "objective/hard" data and "soft" - like labels given by humans eg descriptions of products
+  - higher probability of bias
+  - sanity check of metadata
+- one want to have influence on final outcome
+  - as it is exploratory, it is unsupervised
+  - no direct influence -> to adress this ...
 
 \section{Related works}
 %How this is done in the field
 
 \section{Interactive explanation creation}
 %Description of the algorithms, results on synmthetic data
+- Usually clustering consists of 2 steps:
+  - choice of number of clusters
+  - profiling
+  - repetitive process
+- we propose to explain clusters derived from 1 modality ("hard data") with textual modality (usual form of metadata)
+  - for choice of clusters: TSNE and silhouette score
+  - then textual explanations follows straight away
+  - influence on explanations: 1) stopwords 2) whitelist
+
 
 \section{Real case scenario}
 %About the paper citation clustering  and what are plans for extending that part.
+In this part we will show how our framework could be applied to real case scenario.
+We choose example from e-commerce filed because authors have experience of working in this industry.
+
 
 
 \section{Summary}
 SEO
 visual modality
+- hierarchical clustering
+- Latent Dirichlet Allocation
 %:)
 
 \begin{acknowledgments}
