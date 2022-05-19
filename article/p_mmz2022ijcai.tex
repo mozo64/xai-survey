@@ -19,6 +19,16 @@
 \usepackage{lmodern}
 \usepackage{minted}
 \usepackage{textcomp}
+
+%\usepackage[breakable]{tcolorbox}
+%\usepackage{enumerate} % Needed for markdown enumerations to work
+%\usepackage{geometry} % Used to adjust the document margins
+%\usepackage{upquote} % Upright quotes for verbatim code
+%\usepackage{eurosym} % defines \euro
+%\usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+%\usepackage{fancyvrb} % verbatim replacement that allows latex
+%\usepackage{grffile} % extends the file name processing of package graphics % to support a larger range
+
 %% auto break lines
 \lstset{breaklines=true}
 
@@ -111,7 +121,7 @@ url=https://kmitd.github.io/ilaria/,
    - to many observations to do it manually
 - the difficulty arises to explain what algorithm has learned and if it is of any value
 - explanations needs to be done with data comprehensible by humans
-  - images - OK, but not always (vide images of medical images, satellites,  etc)
+  - images are self-explanatory in e-commerce setting, but not necessarily in other (vide images of medical images, satellites,  etc)
   - industrial data - rarely
   - thus "metadata" - link between "objective/hard" data and "soft" - like labels given by humans eg descriptions of products
   - higher probability of bias
@@ -139,7 +149,34 @@ url=https://kmitd.github.io/ilaria/,
 %About the paper citation clustering  and what are plans for extending that part.
 In this part we will show how our framework could be applied to real case scenario.
 We choose example from e-commerce filed because authors have experience of working in this industry.
+Specifically, we work with online stores to provide them, among others, with recommendations of products to their end-users (clients).
 
+In real life scenarios, data about products are stored in product catalogs in shops databases, and most often exchanged with so-called product feeds (xml documents).
+We used public dataset from Kaggle (https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small).
+This dataset in terms of content resembles a product feed for online store of medium size product catalog.
+It consisted of 44000 products with category labels, titles and images.
+
+Our workflow was based on this kaggle notebook: https://www.kaggle.com/code/shubhijoshi/similar-image-finder-using-k-means/notebook, and we adapted it to our needs.
+As been said before, we treat images as "objective" data.
+We used embeddings of images obtained via MobileNetV2 (https://arxiv.org/pdf/1801.04381v4.pdf).
+Fully-connected layer at the top of the network was disregarded, because we were not interested in classification done by the model.
+The output of the final layer of the model was of length 20480.
+We used Singular Value Decomposition (SVD) with normalisation to reduce dimensionality of embeddings, leaving at least 90 percent of variance.
+
+\begin{figure}
+    \centering
+    \includegraphics{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_57_1}
+    \caption{}
+    \label{fig:}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_58_0}
+    \caption{}
+    \label{fig:}
+\end{figure}
+
+Textual data was processed as follows:
 
 
 \section{Summary}
