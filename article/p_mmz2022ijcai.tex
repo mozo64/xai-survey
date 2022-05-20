@@ -267,7 +267,7 @@ Visualization with T-SNE is presented, this time with clusters colored different
 The second step is to explain clusters, so the person who performs data analysis can assess the result.
 We would like to give users agency in refining explanations.
 Thus, we provide her or him with the possibility to influence explanations by extending stopwords with his own terms.
-On the other hand, we initialize the whitelist with keywords like "year2022", and defined "step 0".
+On the other hand, we initialize the whitelist with keywords like "year2022", defined in "step 0".
 Then we use the Tf-Idf vectorizer, taking into account the aforementioned lists.
 Vectors are used for training decision tree classifiers.
 The size of the list of additional terms is under the control of a user.
@@ -310,16 +310,29 @@ Moreover, there is random observation with the LIME explainer for a given class.
 
 
 \section{Summary}
-% TODO Maciej
-%Future work
-%- automatically propose number of clusters
+We believe that the XAI methods are most useful when they support human work.
+The main purpose of this paper is to show that XAI can be put into practice when it is based on 2 foundations.
+The first is the need for a dialogue between the machine learning system and its user, taking into account the needs and predispositions of the latter.
+The second is the observation that different classes of data are helpful to vary degrees in grouping objects themselves and in providing explanations.
+Our approach is obviously not new, but it is worth emphasizing if one wants to create useful solutions for machine learning practitioners.
+We have developed a pipeline that relates to the cluster analysis method, as this technique is widely used with a broad spectrum of applications in science, industry, business, and marketing.
+Furthermore, it is easy to show that it is actually a technical extension of the natural process of describing reality.
+It is also clearly an iterative process, so it is a form of a dialogue between humans and algorithms, and understanding is even more important than, for example, in regression techniques.
+
 %- deep learning - how to use meta-data in DL ?
-%- hierarchical clustering, Latent Dirichlet Allocation
 %- NLG for explanations
-%
-%Applications:
+In future work we would like to improve our framework with several extensions.
+We will focus on automatically proposing number of clusters based both on embedding features with technics similar to T-SNE and metrics like silhouette score.
+We want to test other techniques clustering than k-means.
+For instance hierarchical clustering could more suited in e-commerce, where taxonomies of products are multilayer.
+Word clouds could be replaced with topic analysis with Latent Dirichlet Allocation or techniques derived from Natural Language Generation.
+Another interesting direction is to construct explanations with other modalities, like visual, by something more sophisticated than presenting example images.
+It could be done for instance with image captioning.
+
+
+%We are already working on applications of the tool
 %- e-commerce: customer segmentation, SEO
-%- combining different modalities eg visual
+%-
 
 %:)
 
