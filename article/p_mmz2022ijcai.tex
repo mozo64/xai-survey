@@ -249,7 +249,7 @@ Typically, the person who performs the analysis starts with the dilemma of choic
 It can be resolved with her/his background knowledge, intuition, practicality prerequisites, or just a trial and error approach. %  in terms of comprehension of output and
 To give our users a hint in this regard, we use the T-SNE 2-dimensional projection of the data.
 At the moment, this is a solely visual clue.
-See ~\ref{fig:tsne}.
+It is depicted on Figure~\ref{fig:tsne}.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_57_1}
@@ -260,7 +260,7 @@ If data have an underlying structure, points representing observations will clus
 As T-SNE on massive data could be resource intensive, the default is to run this process on random subsample and cache results.
 Additionally, users can apply textual labels to the T-SNE chart, plotted on a subsample of data, to avoid cluttering the chart. % , prepared in {Data preparation}
 Labels could represent the most important pieces of "meta-data", like the label, observation id, and summary of description.
-The next clue is derived from the plot of the silhouette score ~\ref{fig:silhouette}.
+The next clue is derived from the silhouette score on a plot in the Figure~\ref{fig:silhouette}.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_58_0}
@@ -271,7 +271,7 @@ The range of the number of clusters to be tested is provided in accordance with 
 To speed-up computations, this plot could be obtained on a random subset, and results are cached for further reference.
 For now, the user interprets the plot on her/his own.
 Finally, clustering with k-means is performed on all observations.
-Visualization with T-SNE is presented, this time with clusters colored different colors, which is depicted on ~\ref{fig:kmeans}.
+Visualization with T-SNE is presented, this time with clusters colored different colors, which is depicted on Figure~\ref{fig:kmeans}.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_59_0}
@@ -288,7 +288,7 @@ On the other hand, we initialize the whitelist with keywords like "year2022", de
 Then we use the Tf-Idf vectorizer, taking into account the aforementioned lists.
 Vectors are used for training decision tree classifiers.
 The size of the list of additional terms is under the control of a user.
-She or he can change it and interactively observe the changes in a plot ~\ref{fig:decision_tree}.
+She or he can change it and interactively observe the changes in a Figure~\ref{fig:decision_tree}.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_61_2}
@@ -358,7 +358,8 @@ It could be done for instance with image captioning.
 %:)
 
 \begin{acknowledgments}
-The work of Szymon Bobek has been additionally supported by a HuLCKA grant from the Priority Research Area (Digiworld) under the Strategic Programme Excellence Initiative at the Jagiellonian University (U1U/P06/NO/02.16). 
+The work of Szymon Bobek has been additionally supported by a HuLCKA grant from the Priority Research Area (Digiworld) under the Strategic Programme Excellence Initiative at the Jagiellonian University (U1U/P06/NO/02.16).
+The work of Samaneh Jamshidi was supported by CHIST-ERA grant CHIST-ERA-19-XAI-012 funded by Swedish Research Council.
 \end{acknowledgments}
 
 %%
