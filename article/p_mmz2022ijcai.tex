@@ -51,7 +51,7 @@ Messe Wien, Vienna, Austria}
 
 %%
 %% The "title" command
-\title{Understand your clusters: a link between the clustering data and meta-data}
+\title{Understand your clusters: a link between the clustering data and explanatory meta-data}
 
 \tnotemark[1]
 %\tnotetext[1]{You can use this document as the template for preparing your
@@ -60,7 +60,7 @@ Messe Wien, Vienna, Austria}
 %%
 %% The "author" command and its associated commands are used to define
 %% the authors and their affiliations.
-\author[1]{Maciej T. Mozolewski}[%
+\author[1]{Maciej Mozolewski}[%
 orcid=0000-0002-0877-7063,
 email=m.mozolewski@doctoral.uj.edu.pl,
 url=https://github.com/mozo64,
@@ -76,7 +76,7 @@ url=https://github.com/mozo64,
 %url=https://kmitd.github.io/ilaria/,
 ]
 \fnmark[1]
-\address[2]{Center for Applied Intelligent Systems Research (CAISR), Halmstad University Halmstad, Sweden}
+\address[2]{Center for Applied Intelligent Systems Research (CAISR), Halmstad University, Halmstad, Sweden}
 
 \author[1]{Szymon Bobek}[%
 orcid=0000-0001-7116-9338,
@@ -94,12 +94,12 @@ email=szymon.bobek@uj.edu.pl,
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  In this preliminary work we present an approach for clustering augmented with Natural Language Explanations.
-  With clustering there are 2 main challenges: a) choice of proper, reasonable number of clusters and b) cluster profiling.
-  There is a plethora of technics for a) but not so much for b), which is in general laborious task of explaining obtained clusters.
-  Clustering is in a sense art in that regard that it is intuitive and iterative process.
+  In this preliminary work, we present an approach for clustering augmented with Natural Language Explanations.
+  With clustering there are 2 main challenges: a) choice of a proper, reasonable number of clusters and b) cluster profiling.
+  There is a plethora of technics for a) but not so much for b), which is in the general a laborious task of explaining obtained clusters.
+  Clustering is in a sense art in that regard that it is an intuitive and iterative process.
   Therefore, XAI techniques are well suited in this area.
-  On a convincing example we show how process of clustering on a set of "objective" variables could be facilitated with textual metadata.
+  In a convincing example, we show how the process of clustering on a set of "objective" variables could be facilitated with textual metadata.
   In our case images of products from online fashion store are used for clustering.
   Then product descriptions are used for profiling clusters.
 \end{abstract}
@@ -113,7 +113,10 @@ email=szymon.bobek@uj.edu.pl,
   meta-data \sep
   SVD \sep
   T-SNE \sep
-  NLU \sep
+  Natural Language Understanding \sep
+  Natural Language Processing \sep
+  explanations \sep
+  narratives
 \end{keywords}
 
 %%
@@ -124,21 +127,21 @@ email=szymon.bobek@uj.edu.pl,
 \section{Introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
 %- classification as a tool for understanding
-Categorization is a one of ways how humans describe the world.
-To classify means to notice that some phenomenas differ from each other.
+Categorization is one of the ways how humans describe the world.
+To classify means to notice that some phenomena differ from each other.
 And more importantly how they differ.
 Finally, one is giving names to those different classes of entities.
-Clustering in machine learning in an essence is no different process.
+Clustering in machine learning in essence is a no different process.
 
 %- the problem is common in fields like: marketing, e-commerce, industries, ???
 %- one like to classify "objective" data like images, sensors, etc to uncover hidden structure
 %- to many observations to do it manually
-Clustering methods are common in many fields of human prosperity.
+Clustering methods are standard in many fields of human prosperity.
 In the advent of an ever-increasing amount of data, we use tools to automate the process, as manual clustering is too laborious.
-Indeed, there are many statistical, machine learning and deep learning algorithms.
-The difficulty arises to convince end-user that derived clusters make sense.
-Will it be clustering sensors data in Industry 4.0 or behaviours of consumers, results needs to be actionable.
-We believe that this is not possible if we do not explain what algorithm has learned. % and if it is of any value for human.
+Indeed, there are many statistical, machine learning, and deep learning algorithms.
+The difficulty arises to convince end-users that derived clusters make sense.
+Will it be clustering sensor data in Industry 4.0 or behaviors of consumers, results need to be actionable.
+We believe that this is impossible if we do not explain what the algorithm has learned. % and if it is of any value for humans.
 It also follows that the process is iterative.
 We continually hypothesize about the significant differences between classes, then test results by looking at classified objects.
 
@@ -149,48 +152,48 @@ We continually hypothesize about the significant differences between classes, th
 %  - thus "metadata" - link between "objective/hard" data and "soft" - like labels given by humans eg descriptions of products
 %  - higher probability of bias
 %  - sanity check of metadata
-From our expertise in industry 4.0 and e-commerce we often see distinction between 2 types of data.
+From our expertise in industry 4.0 and e-commerce, we often see distinctions between 2 types of data.
 There are "objective" data and the "subjective" data or "meta-data".
-For instance in e-commerce popular approach for recommendations is with Collaborative Filtering.
-It is based on finding users similar to each other's in terms of interactions with products.
-Thus, "objective" data are shoppers behaviours.
-Categories, titles and descriptions of products are "meta-data", which are usually the result of the joint work of many e-store employees.
-For rolling steel factory, predictive maintenance models are derived mainly from "objective" sensory data, like temperature, force etc.
+For instance in e-commerce popular approach for recommendations is Collaborative Filtering.
+It is based on finding users similar to each other in terms of interactions with products.
+Thus, "objective" data are shoppers' behaviors.
+Categories, titles, and descriptions of products are "meta-data", which are usually the result of the joint work of many e-store employees.
+For rolling steel factories, predictive maintenance models are derived mainly from "objective" sensory data, like temperature, force, etc.
 Factory accounting data are "meta-data".
-6-sigma quality standards lays somewhere in between of "objective-subjective" continuum.
+6-sigma quality standards lay somewhere in between of "objective-subjective" continuum.
 
 %Our underlying statement is.
 This leads to the conclusion:
-The more "objective" data are, the more they are suited for modelling the phenomena, being it physical, business, sociological or psychological in nature.
-"Meta-data" are more suited for explaining the model to user, convincing her or him and prompt to make decisions and actions based on this knowledge.
-They are more prone to error, because of their conventionality and subjectivism, but they speak to human.
+The more "objective" data are, the more they are suited for modeling the phenomena, be it physical, business, sociological or psychological in nature.
+"Meta-data" are more suited for explaining the model to the user, convincing her or him, and prompt to make decisions and actions based on this knowledge.
+They are more prone to error, because of their conventionality and subjectivism, but they speak to humans.
 %- one want to have influence on final outcome
 %  - as it is exploratory, it is unsupervised
 %  - no direct influence -> to adress this ...
 As a closing remark in this section, we want to pinpoint that humans seek agency.
 Clustering algorithms are unsupervised.
-XAI methods are well-fitted for the job of giving control, both on clustering stage and profiling stage.
+XAI methods are well-fitted for the job of giving control, both in the clustering stage and profiling stage.
 
 \section{Related works}
 %How this is done in the field
 %TODO Parisa
 
 \section{Explanations with textual meta-data}
-In this part we will show how our framework could be applied to real case scenario.
-We choose example from e-commerce filed because authors have experience of working in this industry.
+In this part, we will show how our framework could be applied to real case scenarios.
+We choose an example from the e-commerce field because the authors have experience working in this industry.
 Specifically, we work with online stores to provide them, among others, with recommendations of products to their end-users (clients).
 
-In real life scenarios, data about products are stored in product catalogs in shops databases, and most often exchanged with so-called product feeds (xml documents).
-We used public dataset from Kaggle (https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small).
-This dataset in terms of content resembles a product feed for online store of medium size product catalog.
-It consisted of 44000 products with category labels, titles and images.
+In real-life scenarios, data about products are stored in product catalogs in shop databases, and most often exchanged with so-called product feeds (XML documents).
+We used a public dataset from Kaggle (https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small).
+This dataset in terms of content resembles a product feed for an online store of a medium size product catalog.
+It consisted of 44000 products with category labels, titles, and images.
 
-Our workflow was based on this kaggle notebook: https://www.kaggle.com/code/shubhijoshi/similar-image-finder-using-k-means/notebook, and we adapted it to our needs.
+Our workflow was based on this Kaggle notebook: https://www.kaggle.com/code/shubhijoshi/similar-image-finder-using-k-means/notebook, and we adapted it to our needs.
 As been said before, we treat images as "objective" data.
 We used embeddings of images obtained via MobileNetV2 (https://arxiv.org/pdf/1801.04381v4.pdf).
-Fully-connected layer at the top of the network was disregarded, because we were not interested in classification done by the model.
+The fully-connected layer at the top of the network was disregarded because we were not interested in the classification done by the model.
 The output of the final layer of the model was of length 20480.
-We used Singular Value Decomposition (SVD) with normalization to reduce dimensionality of embeddings, leaving at least 90 percent of variance.
+We used Singular Value Decomposition (SVD) with normalization to reduce the dimensionality of embeddings, leaving at least 90 percent of the variance.
 
 %Description of the algorithms, results on synmthetic data
 % We are aiming for the most general case of user exploratory analysis.
@@ -202,33 +205,33 @@ We used Singular Value Decomposition (SVD) with normalization to reduce dimensio
 %  - repetitive process
 %- we propose to explain clusters derived from 1 modality ("hard data") with textual modality (usual form of metadata)
 %- for choice of clusters: TSNE and silhouette score
-In this section we will present tool dedicated for data scientists who would like to perform clustering.
-We propose 2-step clustering loop, which consists of k-means clustering and textual explanations of clusters.
+In this section, we will present tools dedicated to data scientists who would like to perform clustering.
+We propose a 2-step clustering loop, which consists of k-means clustering and textual explanations of clusters.
 Data preparation also could be performed more than once, if needed.
-For the sake of simplicity we call it "step 0" in this work.
+For the sake of simplicity, we call it "step 0" in this work.
 
 \subsection{Data preparation}
-The method requires 2 types of data: "objective" and "meta-data" as defined in previous section.
-In "step 0" framework provides user with helper functions to prepare both types of data.
-For "objective" data there is function which performs reduction of dimensionality via SVD followed by normalization.
+The method requires 2 types of data: "objective" and "meta-data" as defined in the previous section.
+In "step 0" framework provides users with helper functions to prepare both types of data.
+For "objective" data there is a function that performs a reduction of dimensionality via SVD followed by normalization.
 It works on any numerical data, which could be as well as one-hot variables and continuous real values (floats).
 User sets percent of explained variance left after SVD reduction.
-Optimal count of new dimensions could be determined automatically by our algorithm.
-This is done by probing different dimension counts with scipy.optimize package, so user does not need to do this manually.
+The optimal count of new dimensions could be determined automatically by our algorithm.
+This is done by probing different dimension counts with scipy.optimize package, so the user does not need to do this manually.
 As for "meta-data" which are textual, there are wrappers built on top of SpaCy and NLTK libraries.
-User can concat text columns, lemmatize, remove stopwords and perform Tf-Idf vectorisation.
-For numerical "meta-data", we found a way to incorporate them in textual explanations.
-For instance year could be recoded as label "year2022", which will be easily interpreted along the pipeline.
+Users can contact text columns, lemmatize, remove stopwords and perform Tf-Idf vectorization.
+For numerical "meta-data", we found a way to incorporate them into textual explanations.
+For instance, the year could be recoded as the label "year2022", which will be easily interpreted along the pipeline.
 Other numerical variables could be recoded to low/medium/high bins, based on quartiles.
-Finally, user constructs "Pipeline" object and initialise it with 2 datasets: "objective" and "meta-data".
+Finally, the user constructs the "Pipeline" object and initializes it with 2 datasets: "objective" and "meta-data".
 %User can also define functions for creating observation labeles, which could be passed to constructor.
 
 \subsection{Assitance in clustering}
-First step corresponds to running unsupervised algorithm.
-Typically, person who performs the analysis starts with dilemma of choice of the number of clusters.
-It can be resolved with her/his background knowledge, intuition, practicality prerequisites or just trial and error approach. %  in terms of comprehension of output and
-To give our users hint in this regard, we use T-SNE 2-dimensional projection of the data.
-At the moment, this is solely visual clue.
+The first step corresponds to running the unsupervised algorithm.
+Typically, the person who performs the analysis starts with the dilemma of choice of the number of clusters.
+It can be resolved with her/his background knowledge, intuition, practicality prerequisites, or just a trial and error approach. %  in terms of comprehension of output and
+To give our users a hint in this regard, we use the T-SNE 2-dimensional projection of the data.
+At the moment, this is a solely visual clue.
 See ~\ref{fig:tsne}.
 \begin{figure}[h!]
   \centering
@@ -236,22 +239,22 @@ See ~\ref{fig:tsne}.
   \caption{Preliminary visualisation of "objective" data in 2-D projection}
   \label{fig:tsne}
 \end{figure}
-If data have underlying structure, points representing observations will cluster, which would be observed on the chart.
-As T-SNE on massive data could be resources intensive, the default is to run this process on random subsample and cache results.
-Additionally, user can apply textual labels to T-SNE chart, plotted on subsample of data, to avoid cluttering the chart. % , prepared in {Data preparation}
-Labels could represent most important pieces of "meta-data", like label, observation id, summary of description.
-Next clue is derived from plot of silhouette score ~\ref{fig:silhouette}.
+If data have an underlying structure, points representing observations will cluster, which would be observed on the chart.
+As T-SNE on massive data could be resource intensive, the default is to run this process on random subsample and cache results.
+Additionally, users can apply textual labels to the T-SNE chart, plotted on a subsample of data, to avoid cluttering the chart. % , prepared in {Data preparation}
+Labels could represent the most important pieces of "meta-data", like the label, observation id, and summary of description.
+The next clue is derived from the plot of the silhouette score ~\ref{fig:silhouette}.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_58_0}
   \caption{Silhouette score with cluster counts and values}
   \label{fig:silhouette}
 \end{figure}
-Range of number of clusters to be tested is provided in accordance to previous clue.
-To speed-up computations, this plot could be obtained on random subset and results are cached for further reference.
-For now, user interprets the plot on her/his own.
+The range of the number of clusters to be tested is provided in accordance with the previous clue.
+To speed-up computations, this plot could be obtained on a random subset, and results are cached for further reference.
+For now, the user interprets the plot on her/his own.
 Finally, clustering with k-means is performed on all observations.
-Visualisation with T-SNE is presented, this time with clusters colored with different colors, which is depicted on ~\ref{fig:kmeans}.
+Visualization with T-SNE is presented, this time with clusters colored different colors, which is depicted on ~\ref{fig:kmeans}.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_59_0}
@@ -261,23 +264,23 @@ Visualisation with T-SNE is presented, this time with clusters colored with diff
 
 \subsection{Interactive explanations}
 %- then textual explanations follows straight away
-Second step is to explain clusters, so person who performs data analysis can assess the result.
-We would like to give user agency in refining explanations.
-Thus, we provide her or him with possibility to influence explanations with extending stopwords with his own terms.
-On the other hand, we initialise whitelist with keywords like "year2022", defined "step 0".
-Then we use Tf-Idf vectoriser, taking into account aforementioned lists.
-Vectors are used for training decision tree classifier.
-The size of list of additional terms is under control of a user.
-She or he can change it and interactively observe the changes on a plot ~\ref{fig:decision_tree}.
+The second step is to explain clusters, so the person who performs data analysis can assess the result.
+We would like to give users agency in refining explanations.
+Thus, we provide her or him with the possibility to influence explanations by extending stopwords with his own terms.
+On the other hand, we initialize the whitelist with keywords like "year2022", and defined "step 0".
+Then we use the Tf-Idf vectorizer, taking into account the aforementioned lists.
+Vectors are used for training decision tree classifiers.
+The size of the list of additional terms is under the control of a user.
+She or he can change it and interactively observe the changes in a plot ~\ref{fig:decision_tree}.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_61_2}
   \caption{Decision tree classifier which explains how clusters differ in terms of metadata}
   \label{fig:decision_tree}
 \end{figure}
-The last stage is plot of world cloud of each cluster, using the same Tf-Idf vectoriser.
-Plots are accompanied by examples of observations, if data scientist should define visualisation function and pass into Pipeline class API.
-Moreover, there is random observation with LIME explainer fo a given class.
+The last stage is a plot of the word cloud of each cluster, using the same Tf-Idf vectorizer.
+Plots are accompanied by examples of observations if data scientists should define visualization function and pass into Pipeline class API.
+Moreover, there is random observation with the LIME explainer for a given class.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_62_22}
