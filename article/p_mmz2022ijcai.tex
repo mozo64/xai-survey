@@ -194,6 +194,24 @@ Finally, we conclude our work and show perspectives of its further development i
 %How this is done in the field
 %TODO Parisa
 
+Explainable AI approaches have become particularly important, and although most work is generally focused on supervised learning, some works have been done to explain clusters.
+One of the most common methods for understanding clustering methods is visualization. 
+By using low-dimensionality embedding and displaying them in two or three dimensions, one can get an overview of the clusters and their data. 
+However, these visualizations are not always understandable and explainable. 
+
+The decision tree is one of the inherently interpretable algorithms. 
+So one common way to explain models is to use decision trees. 
+Nevertheless, the critical point for explaining the decision tree is its depth because decision trees with high depth no longer are interpreted, so we must pay attention to the depth of the tree produced. 
+Using a small decision tree to divide a dataset into k clusters provides explainable clusters, but this approach has a trade-off between being explainable and accuracy. 
+IMM algorithm approximates k-means and k-median clustering by a threshold tree with k leaves.
+While ExKMC uses a threshold tree to provide an explainable k-mean clustering in which the number of tree leaves is more than the number of clusters.
+
+Besides visualization or providing some conditions on features, using text data is reasonable to explain to users. 
+~\cite{hendricks2016generating} uses the captions of the images along with images to create a more discriminative classification. 
+In addition, they use this meta-data to provide language explanation and generate a text description for each class.
+
+
+
 \section{Cluster analysis with meta-data}
 \label{sec:clumeta}
 In this section, we will show how our method could be applied to real case scenarios.
