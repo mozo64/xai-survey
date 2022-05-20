@@ -67,8 +67,7 @@ url=https://github.com/mozo64,
 ]
 \cormark[1]
 \fnmark[1]
-\address[1]{Jagiellonian University,
-  Cracow, Poland}
+\address[1]{Jagiellonian Human-Centered Artificial Intelligence Laboratory (JAHCAI) and Institute of Applied Computer Science, Jagiellonian University, 31-007 Krak\'ow, Poland}
 
 \author[2]{Samaneh Jamshidi}[%
   orcid=0000-0001-7116-9338,
@@ -79,8 +78,15 @@ url=https://github.com/mozo64,
 \address[2]{Center for Applied Intelligent Systems Research (CAISR), Halmstad University, Halmstad, Sweden}
 
 \author[1]{Szymon Bobek}[%
-orcid=0000-0001-7116-9338,
+orcid=0000-0002-6350-8405,
 email=szymon.bobek@uj.edu.pl,
+%url=https://kmitd.github.io/ilaria/,
+]
+\fnmark[1]
+
+\author[1]{Grzegorz J. Nalepa}[%
+orcid=0000-0002-8182-4225,
+email=grzegorz.j.nalepa@uj.edu.pl,
 %url=https://kmitd.github.io/ilaria/,
 ]
 \fnmark[1]
@@ -94,11 +100,12 @@ email=szymon.bobek@uj.edu.pl,
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-  In this preliminary work, we present an approach for clustering augmented with Natural Language Explanations.
-  With clustering there are 2 main challenges: a) choice of a proper, reasonable number of clusters and b) cluster profiling.
+  In this preliminary work, we present an approach for augmentation of clustering  with Natural Language Explanations.
+  In clustering there are 2 main challenges: a) choice of a proper, reasonable number of clusters and b) cluster analysis and profiling.
   There is a plethora of technics for a) but not so much for b), which is in the general a laborious task of explaining obtained clusters.
-  Clustering is in a sense art in that regard that it is an intuitive and iterative process.
-  Therefore, XAI techniques are well suited in this area.
+  %Clustering is in a sense art in that regard that it is an intuitive and iterative process. % This sentence is strange...
+  %Therefore, XAI techniques are well suited in this area.
+  In this work we propose a method that aids experts in cluster analysis by providing iterative, human-in-the-loop methodology of generating cluster explanations.
   In a convincing example, we show how the process of clustering on a set of "objective" variables could be facilitated with textual metadata.
   In our case images of products from online fashion store are used for clustering.
   Then product descriptions are used for profiling clusters.
@@ -111,9 +118,6 @@ email=szymon.bobek@uj.edu.pl,
   XAI \sep
   clustering \sep
   meta-data \sep
-  SVD \sep
-  T-SNE \sep
-  Natural Language Understanding \sep
   Natural Language Processing \sep
   explanations \sep
   narratives
@@ -152,7 +156,7 @@ We continually hypothesize about the significant differences between classes, th
 %  - thus "metadata" - link between "objective/hard" data and "soft" - like labels given by humans eg descriptions of products
 %  - higher probability of bias
 %  - sanity check of metadata
-From our expertise in industry 4.0 and e-commerce, we often see distinctions between 2 types of data.
+From our expertise in Industry 4.0 and e-commerce, we often see distinctions between 2 types of data.
 There are "objective" data and the "subjective" data or "meta-data".
 For instance in e-commerce popular approach for recommendations is Collaborative Filtering.
 It is based on finding users similar to each other in terms of interactions with products.
@@ -160,37 +164,53 @@ Thus, "objective" data are shoppers' behaviors.
 Categories, titles, and descriptions of products are "meta-data", which are usually the result of the joint work of many e-store employees.
 For rolling steel factories, predictive maintenance models are derived mainly from "objective" sensory data, like temperature, force, etc.
 Factory accounting data are "meta-data".
-6-sigma quality standards lay somewhere in between of "objective-subjective" continuum.
+%Six-sigma quality standards lay somewhere in between of "objective-subjective" continuum.
 
 %Our underlying statement is.
-This leads to the conclusion:
+%This leads to the conclusion:
 The more "objective" data are, the more they are suited for modeling the phenomena, be it physical, business, sociological or psychological in nature.
 "Meta-data" are more suited for explaining the model to the user, convincing her or him, and prompt to make decisions and actions based on this knowledge.
 They are more prone to error, because of their conventionality and subjectivism, but they speak to humans.
 %- one want to have influence on final outcome
 %  - as it is exploratory, it is unsupervised
 %  - no direct influence -> to adress this ...
-As a closing remark in this section, we want to pinpoint that humans seek agency.
-Clustering algorithms are unsupervised.
-XAI methods are well-fitted for the job of giving control, both in the clustering stage and profiling stage.
+%As a closing remark in this section, we want to pinpoint that humans seek agency.
+%Clustering algorithms are unsupervised.
+%XAI methods are well-fitted for the job of giving control, both in the clustering stage and profiling stage.
+
+In whis work we propose a method that allows for clustering dataset with "objective" data, and explain differences between clusters with meta-data.
+We use XAI methods to explain differences between clusters using meta-data which are perfectly understandable by humans, but may not be of enough quality to perform valid clustering.
+The selection of most interpretable meta-data is iterative and human-guided.
+In our example we show how image-based clustering can be enhanced with textual description of clusters.
+We argue that such an approach can lead to better utilisation of meta-data for cluster analysis purposes, which results in better understanding of clusters which is the final goal of every clustering task. % BETTER means nothing, but lets keep it that way.
+Furthremore, it allows for checking the consistency between two or more possible instance reporesentations (image and text) which might be crucial in domains that rely on both (e.g. e-commerce).
+
+
+
+The rest of the paper is organised as follows.
+In Section~\ref{sec:sota} we present current research in the area of interactive clsutering and human-guided clsuter analysis.
+The description of our method along with use-case studies is given in Section~\ref{sec:clumeta}.
+Finally, we conclude our work and show perspectives of its further development is presented in Section~\ref{sec:summary}.
 
 \section{Related works}
+\label{sec:sota}
 %How this is done in the field
 %TODO Parisa
 
-\section{Explanations with textual meta-data}
-In this part, we will show how our framework could be applied to real case scenarios.
+\section{Cluster analysis with meta-data}
+\label{sec:clumeta}
+In this section, we will show how our method could be applied to real case scenarios.
 We choose an example from the e-commerce field because the authors have experience working in this industry.
 Specifically, we work with online stores to provide them, among others, with recommendations of products to their end-users (clients).
 
 In real-life scenarios, data about products are stored in product catalogs in shop databases, and most often exchanged with so-called product feeds (XML documents).
-We used a public dataset from Kaggle (https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small).
+We used a public dataset from Kaggle\footnote{See: \url{https://www.kaggle.com/datasets/paramaggarwal/fashion-product-images-small}}.
 This dataset in terms of content resembles a product feed for an online store of a medium size product catalog.
 It consisted of 44000 products with category labels, titles, and images.
 
-Our workflow was based on this Kaggle notebook: https://www.kaggle.com/code/shubhijoshi/similar-image-finder-using-k-means/notebook, and we adapted it to our needs.
+%Our workflow was based on this Kaggle notebook: https://www.kaggle.com/code/shubhijoshi/similar-image-finder-using-k-means/notebook, and we adapted it to our needs.
 As been said before, we treat images as "objective" data.
-We used embeddings of images obtained via MobileNetV2 (https://arxiv.org/pdf/1801.04381v4.pdf).
+We used embeddings of images obtained via MobileNetV2~\cite{sandler2019mobilenetv2}.
 The fully-connected layer at the top of the network was disregarded because we were not interested in the classification done by the model.
 The output of the final layer of the model was of length 20480.
 We used Singular Value Decomposition (SVD) with normalization to reduce the dimensionality of embeddings, leaving at least 90 percent of the variance.
@@ -212,7 +232,7 @@ For the sake of simplicity, we call it "step 0" in this work.
 
 \subsection{Data preparation}
 The method requires 2 types of data: "objective" and "meta-data" as defined in the previous section.
-In "step 0" framework provides users with helper functions to prepare both types of data.
+In "step 0" method provides users with helper functions to prepare both types of data.
 For "objective" data there is a function that performs a reduction of dimensionality via SVD followed by normalization.
 It works on any numerical data, which could be as well as one-hot variables and continuous real values (floats).
 User sets percent of explained variance left after SVD reduction.
@@ -310,18 +330,22 @@ Moreover, there is random observation with the LIME explainer for a given class.
 
 
 \section{Summary}
-We believe that the XAI methods are most useful when they support human work.
-The main purpose of this paper is to show that XAI can be put into practice when it is based on 2 foundations.
-The first is the need for a dialogue between the machine learning system and its user, taking into account the needs and predispositions of the latter.
-The second is the observation that different classes of data are helpful to vary degrees in grouping objects themselves and in providing explanations.
-Our approach is obviously not new, but it is worth emphasizing if one wants to create useful solutions for machine learning practitioners.
-We have developed a pipeline that relates to the cluster analysis method, as this technique is widely used with a broad spectrum of applications in science, industry, business, and marketing.
-Furthermore, it is easy to show that it is actually a technical extension of the natural process of describing reality.
-It is also clearly an iterative process, so it is a form of a dialogue between humans and algorithms, and understanding is even more important than, for example, in regression techniques.
+\label{sec:summary}
+%We believe that the XAI methods are most useful when they support human work.
+%The main purpose of this paper is to show that XAI can be put into practice when it is based on 2 foundations.
+%The first is the need for a dialogue between the machine learning system and its user, taking into account the needs and predispositions of the latter.
+In this work we presented the method that allows for explaining clusters with concepts that could be more human-readable that data which was used as sn input to clustering algorithm.
+We based our method on the observation that different types of data are suitable in different degrees to clustering and explaining tasks.
+We demonstrated the feasibility of our approach on the e-commerce example, where images were treated as input for clustering and textial descriptions of images as basis for cluster descriptions.
+
+%Our approach is obviously not new, but it is worth emphasizing if one wants to create useful solutions for machine learning practitioners.
+%We have developed a method that relates to the cluster analysis method, as this technique is widely used with a broad spectrum of applications in science, industry, business, and marketing.
+%Furthermore, it is easy to show that it is actually a technical extension of the natural process of describing reality.
+%It is also clearly an iterative process, so it is a form of a dialogue between humans and algorithms, and understanding is even more important than, for example, in regression techniques.
 
 %- deep learning - how to use meta-data in DL ?
 %- NLG for explanations
-In future work we would like to improve our framework with several extensions.
+In future work we would like to improve our method with several extensions.
 We will focus on automatically proposing number of clusters based both on embedding features with technics similar to T-SNE and metrics like silhouette score.
 We want to test other techniques clustering than k-means.
 For instance hierarchical clustering could more suited in e-commerce, where taxonomies of products are multilayer.
@@ -336,12 +360,9 @@ It could be done for instance with image captioning.
 
 %:)
 
-%\begin{acknowledgments}
-%  Thanks to the developers of ACM consolidated LaTeX styles
-%  \url{https://github.com/borisveytsman/acmart} and to the developers
-%  of Elsevier updated \LaTeX{} templates
-%  \url{https://www.ctan.org/tex-archive/macros/latex/contrib/els-cas-templates}.
-%\end{acknowledgments}
+\begin{acknowledgments}
+The work of Szymon Bobek has been additionally supported by a HuLCKA grant from the Priority Research Area (Digiworld) under the Strategic Programme Excellence Initiative at the Jagiellonian University (U1U/P06/NO/02.16). 
+\end{acknowledgments}
 
 %%
 %% Define the bibliography file to be used
