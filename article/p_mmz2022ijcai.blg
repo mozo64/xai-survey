@@ -6,10 +6,14 @@ I couldn't open style file elsarticle-num-names.bst
  : \bibstyle{elsarticle-num-names
  :                               }
 I'm skipping whatever remains of this command
+Illegal, another \bibstyle command---line 56 of file p_mmz2022ijcai.aux
+ : \bibstyle
+ :          {plain}
+I'm skipping whatever remains of this command
 I found no style file---while reading file p_mmz2022ijcai.aux
-You've used 1 entry,
+You've used 2 entries,
             0 wiz_defined-function locations,
-            86 strings with 555 characters,
+            87 strings with 578 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0
@@ -48,4 +52,4 @@ warning$ -- 0
 while$ -- 0
 width$ -- 0
 write$ -- 0
-(There were 2 error messages)
+(There were 3 error messages)

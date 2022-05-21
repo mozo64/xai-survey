@@ -17,8 +17,8 @@
 %% Need pygment <http://pygments.org/> <http://pypi.python.org/pypi/Pygments>
 \usepackage{listings}
 \usepackage{lmodern}
-\usepackage{minted}
-\usepackage{textcomp}
+%\usepackage{minted}
+%\usepackage{textcomp}
 
 %\usepackage[breakable]{tcolorbox}
 %\usepackage{enumerate} % Needed for markdown enumerations to work
@@ -267,10 +267,10 @@ Typically, the person who performs the analysis starts with the dilemma of choic
 It can be resolved with her/his background knowledge, intuition, practicality prerequisites, or just a trial and error approach. %  in terms of comprehension of output and
 To give our users a hint in this regard, we use the T-SNE 2-dimensional projection of the data.
 At the moment, this is a solely visual clue.
-It is depicted on Figure 1~\ref{fig:tsne}.
+It is depicted on Figure~\ref{fig:tsne}.
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_57_1}
+  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_57_1}
   \caption{Preliminary visualisation of "objective" data in 2-D projection}
   \label{fig:tsne}
 \end{figure}
@@ -278,10 +278,10 @@ If data have an underlying structure, points representing observations will clus
 As T-SNE on massive data could be resource intensive, the default is to run this process on random subsample and cache results.
 Additionally, users can apply textual labels to the T-SNE chart, plotted on a subsample of data, to avoid cluttering the chart. % , prepared in {Data preparation}
 Labels could represent the most important pieces of "meta-data", like the label, observation id, and summary of description.
-The next clue is derived from the silhouette score on a plot in the Figure 2~\ref{fig:silhouette}.
+The next clue is derived from the silhouette score on a plot in the Figure~\ref{fig:silhouette}.
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_58_0}
+  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_58_0}
   \caption{Silhouette score with cluster counts and values}
   \label{fig:silhouette}
 \end{figure}
@@ -289,10 +289,10 @@ The range of the number of clusters to be tested is provided in accordance with 
 To speed-up computations, this plot could be obtained on a random subset, and results are cached for further reference.
 For now, the user interprets the plot on her/his own.
 Finally, clustering with k-means is performed on all observations.
-Visualization with T-SNE is presented, this time with clusters colored different colors, which is depicted on Figure 3~\ref{fig:kmeans}.
+Visualization with T-SNE is presented, this time with clusters colored different colors, which is depicted on Figure~\ref{fig:kmeans}.
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_59_0}
+  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_59_0}
   \caption{Preliminary visualisation of "objective" data in 2-D projection}
   \label{fig:kmeans}
 \end{figure}
@@ -306,11 +306,11 @@ On the other hand, we initialize the whitelist with keywords like "year2022", de
 Then we use the Tf-Idf vectorizer, taking into account the aforementioned lists.
 Vectors are used for training decision tree classifiers.
 The size of the list of additional terms is under the control of a user.
-She or he can change it and interactively observe the changes in a Figure 4~\ref{fig:decision_tree}.
-Moreover, there are presented example observations on Figure 5~\ref{fig:example_products}, word clouds describing clusters on Figure 6~\ref{fig:wordcloud} and LIME explanation for one instance of meta-data Figure 7~\ref{fig:lime}.
+She or he can change it and interactively observe the changes in a Figure~\ref{fig:decision_tree}.
+Moreover, there are presented example observations on Figure~\ref{fig:example_products}, word clouds describing clusters on Figure~\ref{fig:wordcloud} and LIME explanation for one instance of meta-data Figure~\ref{fig:lime}.
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_61_2}
+  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_61_2}
   \caption{Decision tree classifier which explains how clusters differ in terms of metadata}
   \label{fig:decision_tree}
 \end{figure}
@@ -319,19 +319,19 @@ Plots are accompanied by examples of observations if data scientists should defi
 Moreover, there is random observation with the LIME explainer for a given class.
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_62_22}
+  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_22}
   \caption{Example products}
   \label{fig:example_products}
 \end{figure}
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/output_62_23}
+  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_23}
   \caption{Word cloud for a given category}
   \label{fig:wordcloud}
 \end{figure}
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=\linewidth]{/media/mmozolewski/m.mozolewski@gma/Documents/Doktorat/Parisa/xai-survey/article/example1-clustering-products-fashion-tex/LIME_13_handbags-Selection_265}
+  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/LIME_13_handbags-Selection_265}
   \caption{LIME explanation for observation in category "handbags"}
   \label{fig:lime}
 \end{figure}
@@ -384,8 +384,10 @@ The work of Samaneh Jamshidi was supported by CHIST-ERA grant CHIST-ERA-19-XAI-0
 
 %%
 %% Define the bibliography file to be used
-\nocite{*}
+%\nocite{*}
 \bibliography{sample-ceur}
+\bibliographystyle{plain}
+
 % TODO Szymon
 
 
