@@ -183,8 +183,8 @@ The decision tree is one of the inherently interpretable algorithms.
 So one common way to explain models is to use decision trees. 
 Nevertheless, the critical point for explaining the decision tree is its depth because decision trees with high depth no longer are interpreted, so we must pay attention to the depth of the tree produced. 
 Using a small decision tree to divide a dataset into k clusters provides explainable clusters, but this approach has a trade-off between being explainable and accuracy. 
-IMM algorithm approximates k-means and k-median clustering by a threshold tree with k leaves.
-While ExKMC uses a threshold tree to provide an explainable k-mean clustering in which the number of tree leaves is more than the number of clusters.
+IMM algorithm~\cite{dasgupta2020explainable} approximates k-means and k-median clustering by a threshold tree with k leaves.
+While ExKMC~\cite{frost2020exkmc} uses a threshold tree to provide an explainable k-mean clustering in which the number of tree leaves is more than the number of clusters.
 
 Besides visualization or providing some conditions on features, using text data is reasonable to explain to users. 
 ~\cite{hendricks2016generating} uses the captions of the images along with images to create a more discriminative classification. 
@@ -237,7 +237,7 @@ It works on any numerical data, which could be as well as one-hot variables and 
 User sets percent of explained variance left after SVD reduction.
 The optimal count of new dimensions could be determined automatically by our algorithm.
 This is done by probing different dimension counts with scipy.optimize package, so the user does not need to do this manually.
-As for "meta-data" which are textual, there are wrappers built on top of SpaCy and NLTK libraries.
+As for "meta-data" which are textual, there are wrappers built on top of SpaCy\footnote{See: \url{https://spacy.io/}} and NLTK\footnote{See: \url{https://www.nltk.org/}} libraries.
 Users can contact text columns, lemmatize, remove stopwords and perform Tf-Idf vectorization.
 For numerical "meta-data", we found a way to incorporate them into textual explanations.
 For instance, the year could be recoded as the label "year2022", which will be easily interpreted along the pipeline.
@@ -313,6 +313,7 @@ Moreover, there is random observation with the LIME explainer for a given class.
   \caption{Word cloud for a given category}
   \label{fig:wordcloud}
 \end{figure}
+
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/LIME_13_handbags-Selection_265}

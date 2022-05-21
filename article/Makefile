@@ -13,6 +13,8 @@ all:		$(PAPERNAME).tex
 		pdflatex $(OPTIONS) $(PAPERNAME)	
 		bibtex $(PAPERNAME)
 		pdflatex $(OPTIONS) $(PAPERNAME)
+		pdflatex $(OPTIONS) $(PAPERNAME)
+
 
 clean:
 	rm -f *~ *.aux *.bak *.flc *.log *.bbl *.blg *.dvi *.idx *.ilg *.ind *.lof *.lot *.not *.toc $(PAPERNAME).ps $(PAPERNAME).pdf *.nav *.out *.snm *.zip *.backup *.tdo *.abs
