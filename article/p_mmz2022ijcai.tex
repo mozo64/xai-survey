@@ -5,7 +5,7 @@
 %% hf: enable header and footer.
 \documentclass[
  twocolumn,
-% hf,
+ hf,
 ]{ceurart}
 
 %%
@@ -15,19 +15,10 @@
 %%
 %% Minted listings support 
 %% Need pygment <http://pygments.org/> <http://pypi.python.org/pypi/Pygments>
-\usepackage{listings}
 \usepackage{lmodern}
-%\usepackage{minted}
-%\usepackage{textcomp}
-
-%\usepackage[breakable]{tcolorbox}
-%\usepackage{enumerate} % Needed for markdown enumerations to work
-%\usepackage{geometry} % Used to adjust the document margins
-%\usepackage{upquote} % Upright quotes for verbatim code
-%\usepackage{eurosym} % defines \euro
-%\usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
-%\usepackage{fancyvrb} % verbatim replacement that allows latex
-%\usepackage{grffile} % extends the file name processing of package graphics % to support a larger range
+\usepackage{textcomp}
+\usepackage{listings}
+\usepackage{minted}
 
 %% auto break lines
 \lstset{breaklines=true}
@@ -46,51 +37,39 @@
 
 %%
 %% This command is for the conference information
-\conference{IJCAI-ECAI 2022, the 31st International Joint Conference on Artificial Intelligence and the 25th European Conference on Artificial Intelligence, July 23-29, 2022
+\conference{IJCAI-ECAI 2022, the 31st International Joint Conference on Artificial Intelligence and the 25th European Conference on Artificial Intelligence, July 23--29, 2022
 Messe Wien, Vienna, Austria}
 
 %%
 %% The "title" command
 \title{Understand your clusters: a link between the clustering data and explanatory meta-data}
 
-\tnotemark[1]
-%\tnotetext[1]{You can use this document as the template for preparing your
-%  publication. We recommend using the latest version of the ceurart style.}
-
 %%
 %% The "author" command and its associated commands are used to define
 %% the authors and their affiliations.
-\author[1]{Maciej Mozolewski}[%
+\author[1]{Maciej Mozolewski}[
 orcid=0000-0003-4227-3894,
 email=m.mozolewski@doctoral.uj.edu.pl,
 url=https://github.com/mozo64,
 ]
-%\cormark[1]
-%\fnmark[1]
-\address[1]{Jagiellonian Human-Centered Artificial Intelligence Laboratory (JAHCAI) and Institute of Applied Computer Science, Jagiellonian University, 31-007 Krak\'ow, Poland}
 
-\author[2]{Samaneh Jamshidi}[%
+\author[2]{Samaneh Jamshidi}[
 orcid=0000−0001−7055−2706,
 email=samaneh.jamshidi@hh.se,
 ]
-\address[2]{Center for Applied Intelligent Systems Research (CAISR), Halmstad University, Halmstad, Sweden}
 
-\author[1]{Szymon Bobek}[%
+\author[1]{Szymon Bobek}[
 orcid=0000-0002-6350-8405,
 email=szymon.bobek@uj.edu.pl,
 ]
 
-\author[1]{Grzegorz J. Nalepa}[%
+\author[1]{Grzegorz J. Nalepa}[
 orcid=0000-0002-8182-4225,
 email=grzegorz.j.nalepa@uj.edu.pl,
-%url=https://kmitd.github.io/ilaria/,
 ]
 
-%\address[3]{Vrije Universiteit Amsterdam, De Boelelaan 1105, 1081 HV Amsterdam, The Netherlands}
-
-%% Footnotes
-%\cortext[1]{Corresponding author.}
-%\fntext[1]{These authors contributed equally.}
+\address[1]{Jagiellonian Human-Centered Artificial Intelligence Laboratory (JAHCAI) and Institute of Applied Computer Science, Jagiellonian University, Cracow, Poland}
+\address[2]{Center for Applied Intelligent Systems Research (CAISR), Halmstad University, Halmstad, Sweden}
 
 %%
 %% The abstract is a short summary of the work to be presented in the
@@ -124,7 +103,7 @@ email=grzegorz.j.nalepa@uj.edu.pl,
 %% information and builds the first part of the formatted document.
 \maketitle
 
-\section{Introduction}
+\section{Introduction}\label{sec:introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
 %- classification as a tool for understanding
 Categorization is one of the ways how humans describe the world.
@@ -179,7 +158,7 @@ We use XAI methods to explain differences between clusters using meta-data which
 The selection of most interpretable meta-data is iterative and human-guided.
 In our example we show how image-based clustering can be enhanced with textual description of clusters.
 We argue that such an approach can lead to better utilisation of meta-data for cluster analysis purposes, which results in better understanding of clusters which is the final goal of every clustering task. % BETTER means nothing, but lets keep it that way.
-Furthremore, it allows for checking the consistency between two or more possible instance reporesentations (image and text) which might be crucial in domains that rely on both (e.g. e-commerce).
+Furthremore, it allows for checking the consistency between two or more possible instance reporesentations (image and text) which might be crucial in domains that rely on both (e.g.\ e-commerce).
 
 
 
@@ -248,7 +227,7 @@ We propose a 2-step clustering loop, which consists of k-means clustering and te
 Data preparation also could be performed more than once, if needed.
 For the sake of simplicity, we call it "step 0" in this work.
 
-\subsection{Data preparation}
+\subsection{Data preparation}\label{subsec:data-preparation}
 The method requires 2 types of data: "objective" and "meta-data" as defined in the previous section.
 In "step 0" method provides users with helper functions to prepare both types of data.
 For "objective" data there is a function that performs a reduction of dimensionality via SVD followed by normalization.
@@ -264,7 +243,7 @@ Other numerical variables could be recoded to low/medium/high bins, based on qua
 Finally, the user constructs the "Pipeline" object and initializes it with 2 datasets: "objective" and "meta-data".
 %User can also define functions for creating observation labeles, which could be passed to constructor.
 
-\subsection{Assitance in clustering}
+\subsection{Assitance in clustering}\label{subsec:assitance-in-clustering}
 The first step corresponds to running the unsupervised algorithm.
 Typically, the person who performs the analysis starts with the dilemma of choice of the number of clusters.
 It can be resolved with her/his background knowledge, intuition, practicality prerequisites, or just a trial and error approach. %  in terms of comprehension of output and
@@ -300,7 +279,7 @@ Visualization with T-SNE is presented, this time with clusters colored different
   \label{fig:kmeans}
 \end{figure}
 
-\subsection{Interactive explanations}
+\subsection{Interactive explanations}\label{subsec:interactive-explanations}
 %- then textual explanations follows straight away
 The second step is to explain clusters, so the person who performs data analysis can assess the result.
 We would like to give users agency in refining explanations.
@@ -318,7 +297,7 @@ Moreover, there are presented example observations on Figure~\ref{fig:example_pr
   \label{fig:decision_tree}
 \end{figure}
 The last stage is a plot of the word cloud of each cluster, using the same Tf-Idf vectorizer.
-Plots are accompanied by examples of observations if data scientists should define visualization function and pass into Pipeline class API.
+Plots are accompanied by examples of observations if data scientists should define visualization function and pass into Pipeline class API\@.
 Moreover, there is random observation with the LIME explainer for a given class.
 \begin{figure}[h!]
   \centering

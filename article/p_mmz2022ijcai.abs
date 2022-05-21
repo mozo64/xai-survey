@@ -1,0 +1,9 @@
+In this preliminary work, we present an approach for augmentation of clustering  with Natural Language Explanations.
+  In clustering there are 2 main challenges: a) choice of a proper, reasonable number of clusters and b) cluster analysis and profiling.
+  There is a plethora of technics for a) but not so much for b), which is in the general a laborious task of explaining obtained clusters.
+  %Clustering is in a sense art in that regard that it is an intuitive and iterative process. % This sentence is strange...
+  %Therefore, XAI techniques are well suited in this area.
+  In this work we propose a method that aids experts in cluster analysis by providing iterative, human-in-the-loop methodology of generating cluster explanations.
+  In a convincing example, we show how the process of clustering on a set of "objective" variables could be facilitated with textual metadata.
+  In our case images of products from online fashion store are used for clustering.
+  Then product descriptions are used for profiling clusters.
