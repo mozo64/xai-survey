@@ -108,7 +108,7 @@ Messe Wien, Vienna, Austria}
 \section{Introduction}\label{sec:introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
 %- classification as a tool for understanding
-Assigning labels to groups of similar objects is one of the ways how humans describe the world.
+Assigning labels to groups of similar objects is one of the ways how humans describe the world [~\cite{Rosch1978-ROSCAC-5}, ~\cite{doi:10.1146/annurev.neuro.051508.135546}].
 It begins with a notion that some phenomena or entities differ from each other and that they could be divided into distinct classes.
 The clarification of the differences between groups gets better and better along with the knowledge gained about the instances that form different groups.
 Finally, one is giving names to those different categories of entities. %TODO: can we cite some work from social sicence whcih actually is about that?
@@ -203,7 +203,6 @@ Besides, visualization or providing some conditions on features, using text data
 In~\cite{hendricks2016generating} authors use captions of the images along with images to create a more discriminative classification. 
 In addition, they use this \textit{metadata} to provide language explanation and generate a text description for each class.
 However, by blending textual and image modalities into one datset, authors limits the possibility of checking consistency between these two types of data, and implicitly assume the corectness of possibly wrong image descriptions.
-
 
 Similarly, in many other methods that aim at explaining differences between discovered clusters, the clustering task is transformed to classification one, and the classifier is then explained with available XAI methods such as LIME~\cite{lime}, Anchor~\cite{anchor}, LUX~\cite{lux2021iccs}, etc.
 One of the most recent implementations of such approach can be found in~\cite{xaiclust2021}.
