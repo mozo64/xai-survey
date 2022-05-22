@@ -29,7 +29,7 @@
 
 %%
 %% The "title" command
-\title{Understand your clusters: a link between the clustering data and explanatory metadata}
+\title{Explain your clusters with words. The role of metadata in interactive clustering}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -108,23 +108,30 @@ Messe Wien, Vienna, Austria}
 \section{Introduction}\label{sec:introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
 %- classification as a tool for understanding
-Categorization is one of the ways how humans describe the world.
-To classify means to notice that some phenomena differ from each other.
-And more importantly how they differ.
-Finally, one is giving names to those different classes of entities.
-Clustering in machine learning in essence is a no different process.
+Putting label to group of similar objects is one of the ways how humans describe the world.
+It begins with notion that some phenomena or entities differ from each other and that they could be divided into distinct classes.
+In the process, the clarification of the differences between groups gets better and better.
+Finally, one is giving names to those different categories of entities.
+In essence, clustering in machine learning is a no different process.
 
 %- the problem is common in fields like: marketing, e-commerce, industries, ???
 %- one like to classify \textit{objective data} like images, sensors, etc to uncover hidden structure
 %- to many observations to do it manually
-Clustering methods are standard in many fields of human prosperity.
-In the advent of an ever-increasing amount of data, we use tools to automate the process, as manual clustering is too laborious.
-Indeed, there are many statistical, machine learning, and deep learning algorithms.
-The difficulty arises to convince end-users that derived clusters make sense.
-Will it be clustering sensor data in Industry 4.0 or behaviors of consumers, results need to be actionable.
-We believe that this is impossible if we do not explain what the algorithm has learned. % and if it is of any value for humans.
+%Clustering methods are standard in many fields of human prosperity.
+%In the advent of an ever-increasing amount of data, we use tools to automate the process, as manual clustering is too laborious.
+%Indeed, there are many statistical, machine learning, and deep learning algorithms.
+%The difficulty arises to convince end-users that derived clusters make sense.
+%Will it be clustering sensor data in Industry 4.0 or behaviors of consumers, results need to be actionable.
+%We believe that this is impossible if we do not explain what the algorithm has learned. % and if it is of any value for humans.
+%We continually hypothesize about the significant differences between classes, then test results
+Clustering is an intrinsically subjective task and requires human assessment~\cite{10.1145/3340960}.
+It is a purely statistical method which finds homogeneous groups of entities.
+It belongs to the family of the unsupervised algorithm in contrast to classification or regression, which are supervised.
+At every step of this process, the user makes decisions based on her/his domain knowledge.
+Firstly, she/he needs to select features (variables) used by the algorithm.
+Secondly, the user selects the type of algorithm, similarity measures, number of clusters or size of the smallest one.
+Finally, she or he checks clusters by describing objects belonging to subsequent groups.
 It also follows that the process is iterative.
-We continually hypothesize about the significant differences between classes, then test results by looking at classified objects.
 
 %- explanations needs to be done with data comprehensible by humans
 %   - data are not equal
@@ -134,7 +141,7 @@ We continually hypothesize about the significant differences between classes, th
 %  - higher probability of bias
 %  - sanity check of metadata
 From our expertise in Industry 4.0 and e-commerce, we often see distinctions between 2 types of data.
-There are \textit{objective data} and the "subjective" data or \textit{metadata}.
+There are \textit{objective data} and the \textit{subjective data} or \textit{metadata}.
 For instance in e-commerce popular approach for recommendations is Collaborative Filtering.
 It is based on finding users similar to each other in terms of interactions with products.
 Thus, \textit{objective data} are shoppers' behaviors.
@@ -155,14 +162,12 @@ They are more prone to error, because of their conventionality and subjectivism,
 %Clustering algorithms are unsupervised.
 %XAI methods are well-fitted for the job of giving control, both in the clustering stage and profiling stage.
 
-In whis work we propose a method that allows for clustering dataset with \textit{objective data}, and explain differences between clusters with \textit{metadata}.
+In this work we propose a method that allows for clustering dataset with \textit{objective data}, and explain differences between clusters with \textit{metadata}.
 We use XAI methods to explain differences between clusters using \textit{metadata} which are perfectly understandable by humans, but may not be of enough quality to perform valid clustering.
 The selection of most interpretable \textit{metadata} is iterative and human-guided.
 In our example we show how image-based clustering can be enhanced with textual description of clusters.
 We argue that such an approach can lead to better utilisation of \textit{metadata} for cluster analysis purposes, which results in better understanding of clusters which is the final goal of every clustering task. % BETTER means nothing, but lets keep it that way.
-Furthremore, it allows for checking the consistency between two or more possible instance reporesentations (image and text) which might be crucial in domains that rely on both (e.g.\ e-commerce).
-
-
+Furthermore, it allows for checking the consistency between two or more possible instance reporesentations (image and text) which might be crucial in domains that rely on both (e.g.\ e-commerce).
 
 The rest of the paper is organised as follows.
 In Section~\ref{sec:sota} we present current research in the area of interactive clsutering and human-guided clsuter analysis.
@@ -186,14 +191,14 @@ Using a small decision tree to divide a dataset into k clusters provides explain
 IMM algorithm~\cite{dasgupta2020explainable} approximates k-means and k-median clustering by a threshold tree with k leaves.
 While ExKMC~\cite{frost2020exkmc} uses a threshold tree to provide an explainable k-mean clustering in which the number of tree leaves is more than the number of clusters.
 
-Besides visualization or providing some conditions on features, using text data is reasonable to explain to users. 
+Besides, visualization or providing some conditions on features, using text data is reasonable to explain to users.
 ~\cite{hendricks2016generating} uses the captions of the images along with images to create a more discriminative classification. 
 In addition, they use this \textit{metadata} to provide language explanation and generate a text description for each class.
 
-Another approach is given in~\cite{knac2021arxiv}, where authors present a toolkit for conformance checking between expert knowledge with automatic clastering.
-The differences in expert-based clustering and automated clustering is justified with XAI methods and the process is iterative.
+Another approach is given in~\cite{knac2021arxiv}, where authors present a toolkit for conformance checking between expert knowledge with automatic clustering.
+The differences between expert-based clustering and automated clustering are justified with XAI methods and the process is iterative.
 However, the explanations are not human-guided, and the expert has no impact on the way they are generated.
-In particular it is not possible to provide additional \textit{metadata} for explanations, nor modify the set of conccepts that are used for explanations.
+In particular, it is not possible to provide additional \textit{metadata} for explanations, nor modify the set of concepts that are used for explanations.
 
 
 \section{Cluster analysis with \textit{metadata}}
