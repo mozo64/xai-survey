@@ -108,10 +108,10 @@ Messe Wien, Vienna, Austria}
 \section{Introduction}\label{sec:introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
 %- classification as a tool for understanding
-Putting label to group of similar objects is one of the ways how humans describe the world.
-It begins with notion that some phenomena or entities differ from each other and that they could be divided into distinct classes.
-In the process, the clarification of the differences between groups gets better and better.
-Finally, one is giving names to those different categories of entities.
+Assigning labels to groups of similar objects is one of the ways how humans describe the world.
+It begins with a notion that some phenomena or entities differ from each other and that they could be divided into distinct classes.
+The clarification of the differences between groups gets better and better along with the knowledge gained about the instances that form different groups.
+Finally, one is giving names to those different categories of entities. %TODO: can we cite some work from social sicence whcih actually is about that?
 In essence, clustering in machine learning is a no different process.
 
 %- the problem is common in fields like: marketing, e-commerce, industries, ???
@@ -191,14 +191,24 @@ Using a small decision tree to divide a dataset into k clusters provides explain
 IMM algorithm~\cite{dasgupta2020explainable} approximates k-means and k-median clustering by a threshold tree with k leaves.
 While ExKMC~\cite{frost2020exkmc} uses a threshold tree to provide an explainable k-mean clustering in which the number of tree leaves is more than the number of clusters.
 
-Besides, visualization or providing some conditions on features, using text data is reasonable to explain to users.
-~\cite{hendricks2016generating} uses the captions of the images along with images to create a more discriminative classification. 
+Besides, visualization or providing some conditions on features, using text data is reasonable to generate explanations to users.
+In~\cite{hendricks2016generating} authors use captions of the images along with images to create a more discriminative classification. 
 In addition, they use this \textit{metadata} to provide language explanation and generate a text description for each class.
+However, by blending textual and image modalities into one datset, authors limits the possibility of checking consistency between these two types of data, and implicitly assume the corectness of possibly wrong image descriptions.
+
+
+Similarly in many other methods that aim at explaining diferences between discovered clusters, the clsutering task is trasformed to classification one, and the classifier is then explained with available XAI methods such as LIME~\cite{lime}, Anchor~\cite{anchor}, LUX~\cite{lux2021iccs}, etc.
+One of the most recent implementations of such approach can eb found in in~\cite{xaiclust2021}.
 
 Another approach is given in~\cite{knac2021arxiv}, where authors present a toolkit for conformance checking between expert knowledge with automatic clustering.
 The differences between expert-based clustering and automated clustering are justified with XAI methods and the process is iterative.
 However, the explanations are not human-guided, and the expert has no impact on the way they are generated.
 In particular, it is not possible to provide additional \textit{metadata} for explanations, nor modify the set of concepts that are used for explanations.
+
+In all of the cases the process is not  iterative, nor human-guided.
+Finally, to the best of authors knoweldge, neither of the approaches known in literature divide data into \textit{objective} part with a good quality for cluster algorithms, but poor explanation capabilities and \textit{meta-data} with possibly worse potential as clustering featues, but betttrer explanation capabilities and possible inconsistencies with \textit{objective} data that should be fixed.
+Addressing these issues was the primary motivaiton of our work that will be described in more detailes int eh following sections.
+
 
 
 \section{Cluster analysis with \textit{metadata}}
@@ -255,13 +265,13 @@ Finally, the user constructs the "Pipeline" object and initializes it with 2 dat
 The first step corresponds to running the unsupervised algorithm.
 Typically, the person who performs the analysis starts with the dilemma of choice of the number of clusters.
 It can be resolved with her/his background knowledge, intuition, practicality prerequisites, or just a trial and error approach. %  in terms of comprehension of output and
-To give our users a hint in this regard, we use the T-SNE 2-dimensional projection of the data.
+To give our users a hint in this regard, we use the T-SNE~\cite{tsne} 2-dimensional projection of the data.
 At the moment, this is a solely visual clue.
 It is depicted on Figure~\ref{fig:tsne}.
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_57_1}
-  \caption{Preliminary visualisation of \textit{objective data} in 2-D projection}
+  \caption{Preliminary visualisation of \textit{objective data} in 2-D projection with T-SNE dimensionality reduciton. Colors denote clusters discovered with a usage o f \textit{objective} data.} 
   \label{fig:tsne}
 \end{figure}
 If data have an underlying structure, points representing observations will cluster, which would be observed on the chart.
@@ -292,14 +302,14 @@ Visualization with T-SNE is presented, this time with clusters colored different
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_22}
-  \caption{Example products}
+  \caption{Example images of products form the \textit{objective} data that were assigned to the same cluster.}
   \label{fig:example_products}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_23}
-  \caption{Word cloud for a given category}
+  \caption{Word cloud for a category of products presented generated with \textit{meta-data}.}
   \label{fig:wordcloud}
 \end{figure}
 
@@ -311,7 +321,7 @@ Then we use the Tf-Idf vectorizer, taking into account the aforementioned lists.
 Vectors are used for training decision tree classifiers.
 The size of the list of additional terms is under the control of a user.
 She or he can change it and interactively observe the changes in a Figure~\ref{fig:decision_tree}.
-Moreover, there are presented example observations on Figure~\ref{fig:example_products}, word clouds describing clusters on Figure~\ref{fig:wordcloud} and LIME explanation for one instance of \textit{metadata} Figure~\ref{fig:lime}.
+Moreover, there are presented example observations on Figure~\ref{fig:example_products}, word clouds describing clusters on Figure~\ref{fig:wordcloud} and LIME~\cite{lime} explanation for one instance of \textit{metadata} Figure~\ref{fig:lime}.
 
 \begin{figure*}[h!]
   \centering
