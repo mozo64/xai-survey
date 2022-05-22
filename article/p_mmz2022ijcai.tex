@@ -108,7 +108,7 @@ Messe Wien, Vienna, Austria}
 \section{Introduction}\label{sec:introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
 %- classification as a tool for understanding
-Assigning labels to groups of similar objects is one of the ways how humans describe the world.
+Assigning labels to groups of similar objects is one of the ways how humans describe the world [~\cite{Rosch1978-ROSCAC-5}, ~\cite{doi:10.1146/annurev.neuro.051508.135546}].
 It begins with a notion that some phenomena or entities differ from each other and that they could be divided into distinct classes.
 The clarification of the differences between groups gets better and better along with the knowledge gained about the instances that form different groups.
 Finally, one is giving names to those different categories of entities. %TODO: can we cite some work from social sicence whcih actually is about that?
@@ -179,6 +179,14 @@ Finally, we conclude our work and show perspectives of its further development i
 %How this is done in the field
 %TODO Parisa
 
+In the survey on interactive clustering~\cite{10.1145/3340960} authors have distinguished 2 groups of approaches in terms of how interaction occurs.
+In general, users can interact indirectly with the tool, by changing the parameters of the algorithm, or directly by giving feedback to the result of clustering.
+Most frequently adjusted parameters are the number of clusters and the similarity threshold [~\cite{10.1007/978-3-319-23461-8_43}, ~\cite{10.1016/j.eswa.2017.11.055}].
+For topic modelling, users are given the option to select keywords and set their relative importance [~\cite{ElAssady2018ProgressiveLO}, ~\cite{Choo2013UTOPIANUT}].
+On the other hand, direct feedback might be realised by highlighting incorrect instances of splitting or merging the resulting clusters [~\cite{10.1155/2017/4915828}, ~\cite{10.1111/j.1467-8659.2012.03108.x}].
+For textual data, users can provide the tool with blacklists of incorrect topic labels or set similar constrains [~\cite{Chang2016AppGrouperKI}, ~\cite{hu-etal-2011-interactive}].
+Based on this signal, the clustering tool learns user preferences and tries to incorporate the knowledge in the next iteration.
+
 Explainable AI approaches have become particularly important, and although most work is generally focused on supervised learning, some works have been done to explain clusters.
 One of the most common methods for understanding clustering methods is visualization. 
 By using low-dimensionality embedding and displaying them in two or three dimensions, one can get an overview of the clusters and their data. 
@@ -196,20 +204,17 @@ In~\cite{hendricks2016generating} authors use captions of the images along with 
 In addition, they use this \textit{metadata} to provide language explanation and generate a text description for each class.
 However, by blending textual and image modalities into one datset, authors limits the possibility of checking consistency between these two types of data, and implicitly assume the corectness of possibly wrong image descriptions.
 
-
-Similarly in many other methods that aim at explaining diferences between discovered clusters, the clsutering task is trasformed to classification one, and the classifier is then explained with available XAI methods such as LIME~\cite{lime}, Anchor~\cite{anchor}, LUX~\cite{lux2021iccs}, etc.
-One of the most recent implementations of such approach can eb found in in~\cite{xaiclust2021}.
+Similarly, in many other methods that aim at explaining differences between discovered clusters, the clustering task is transformed to classification one, and the classifier is then explained with available XAI methods such as LIME~\cite{lime}, Anchor~\cite{anchor}, LUX~\cite{lux2021iccs}, etc.
+One of the most recent implementations of such approach can be found in~\cite{xaiclust2021}.
 
 Another approach is given in~\cite{knac2021arxiv}, where authors present a toolkit for conformance checking between expert knowledge with automatic clustering.
 The differences between expert-based clustering and automated clustering are justified with XAI methods and the process is iterative.
 However, the explanations are not human-guided, and the expert has no impact on the way they are generated.
 In particular, it is not possible to provide additional \textit{metadata} for explanations, nor modify the set of concepts that are used for explanations.
 
-In all of the cases the process is not  iterative, nor human-guided.
-Finally, to the best of authors knoweldge, neither of the approaches known in literature divide data into \textit{objective} part with a good quality for cluster algorithms, but poor explanation capabilities and \textit{meta-data} with possibly worse potential as clustering featues, but betttrer explanation capabilities and possible inconsistencies with \textit{objective} data that should be fixed.
-Addressing these issues was the primary motivaiton of our work that will be described in more detailes int eh following sections.
-
-
+In all the cases the process is not  iterative, nor human-guided.
+Finally, to the best of authors knowledge, neither of the approaches known in literature divide data into \textit{objective} part with a good quality for cluster algorithms, but poor explanation capabilities and \textit{meta-data} with possibly worse potential as clustering featues, but betttrer explanation capabilities and possible inconsistencies with \textit{objective} data that should be fixed.
+Addressing these issues was the primary motivation of our work that will be described in more detailes int eh following sections.
 
 \section{Cluster analysis with \textit{metadata}}
 \label{sec:clumeta}
