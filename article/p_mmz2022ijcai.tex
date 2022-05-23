@@ -282,12 +282,12 @@ As T-SNE on massive data could be resource intensive, the default is to run this
 Additionally, users can apply textual labels to the T-SNE chart, plotted on a subsample of data, to avoid cluttering the chart. % , prepared in {Data preparation}
 Labels could represent the most important pieces of \textit{metadata}, such as the label, the observation id, and summary of description.
 The next clue is derived from the silhouette score on a plot in the Figure~\ref{fig:silhouette}.
-\begin{figure*}[h!]
+\begin{figure}[h!]
   \centering
-  \includegraphics[width=0.8\textwidth]{silhouette-50}
+  \includegraphics[width=\linewidth]{silhouette-50}
   \caption{Silhouette score with cluster counts and values}
   \label{fig:silhouette}
-\end{figure*}
+\end{figure}
 The range of the number of clusters to be tested is provided in accordance with the previous clue.
 To speed-up computations, this plot could be obtained on a random subset, and results are cached for further reference.
 For now, the user interprets the plot on her/his own.
