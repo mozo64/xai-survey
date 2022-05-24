@@ -298,7 +298,7 @@ Visualization with T-SNE is presented, this time with clusters colored in differ
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_59_0}
-  \caption{Preliminary visualisation of \textit{objective data} in 2-D projection with T-SNE dimensionality reduciton. Colors denote clusters discovered with a usage of \textit{objective} data.}
+  \caption{Preliminary visualisation of \textit{objective data} in 2-D projection with T-SNE dimensionality reduction. Colors denote clusters discovered with a usage of \textit{objective} data.}
   \label{fig:kmeans}
 \end{figure}
 
@@ -307,14 +307,14 @@ Visualization with T-SNE is presented, this time with clusters colored in differ
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_22}
-  \caption{Example images of products form the \textit{objective} data that were assigned to the same cluster.}
+  \caption{Example images of products that were assigned to the same cluster 13 based on the \textit{objective data}.}
   \label{fig:example_products}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_23}
-  \caption{Word cloud for a category of products presented in Fig.~\ref{fig:example_products} generated with \textit{meta-data}.}
+  \caption{Word cloud for a cluster of products presented in Fig.~\ref{fig:example_products} (cluster 13) generated with \textit{meta-data}.}
   \label{fig:wordcloud}
 \end{figure}
 
@@ -325,20 +325,22 @@ On the other hand, we initialize the whitelist with keywords like "year2022", de
 Then we use the Tf-Idf vectorizer, taking into account the aforementioned lists.
 Vectors are used to train decision tree classifiers.
 The size of the list of additional terms is under the control of a user.
-She or he can change it and interactively observe the changes in a Figure~\ref{fig:decision_tree}.
-Furthermore, example observations are presented in Figure~\ref{fig:example_products}, word clouds that describe clusters in Figure~\ref{fig:wordcloud} and LIME~\cite{lime} explanation for one instance of \textit{metadata} in Figure~\ref{fig:lime}.
+She or he can change it and interactively observe the result in a Figure~\ref{fig:decision_tree}, which gives an insight into what terms were relevant for classifier.
+Furthermore, for every cluster, example observations, word clouds and LIME explanation for description of random observation are presented.
+For instance for the cluster 13 in Figure~\ref{fig:example_products} one can see example products, word clouds that describe clusters in Figure~\ref{fig:wordcloud} and LIME~\cite{lime} explanation for one instance of \textit{metadata} in Figure~\ref{fig:lime}.
+In this case one can see that the cluster 13 corresponds to product category "handbags".
 
 \begin{figure*}[h!]
   \centering
   \includegraphics[width=0.8\textwidth]{tree-improved}
-  \caption{Decision tree classifier which explains how clusters differ in terms of \textit{metadata}.}
+  \caption{Decision tree classifier which explains how clusters differ in terms of \textit{metadata}, here pruned to level 4.}
   \label{fig:decision_tree}
 \end{figure*}
 
 \begin{figure*}[h!]
   \centering
   \includegraphics[width=0.8\textwidth]{example1-clustering-products-fashion-tex/LIME_13_handbags-Selection_265}
-  \caption{LIME explanation for observation in category "handbags".}
+  \caption{LIME explanation for a random observation drawn from the cluster 13.}
   \label{fig:lime}
 \end{figure*}
 
