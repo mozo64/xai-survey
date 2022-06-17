@@ -55,7 +55,7 @@
   email=grzegorz.j.nalepa@uj.edu.pl,
 ]
 
-\address[1]{Jagiellonian Human-Centered Artificial Intelligence Laboratory (JAHCAI) and Institute of Applied Computer Science, Jagiellonian University, Cracow, Poland}
+\address[1]{Jagiellonian Human-Centered Artificial Intelligence Laboratory (JAHCAI) and Institute of Applied Computer Science, Jagiellonian University, 31-007 Kraków, Poland}
 \address[2]{Center for Applied Intelligent Systems Research (CAISR), Halmstad University, Halmstad, Sweden}
 
 %%
@@ -157,7 +157,8 @@ Factory accounting data are \textit{metadata}.
 %Six-sigma quality standards lay somewhere in between of \textit{objective-subjective} continuum.
 
 %TODO Szymon pls check:
-Going back to narratives, \textit{objective data} can be viewed as story or the totality of facts that have occurred.
+%Going back to narratives, 
+\textit{Objective data} can be viewed as story or the totality of facts that have occurred.
 They can be difficult for humans to understand but lend themselves well to clustering.
 \textit{Metadata}, in contrast, is more a type of narrative, or how the algorithm's outcome is presented by data scientists to their audience.
 \textit{Metadata} is more subjective, making it more suitable for justification and formulation of conclusions and explanations.
@@ -380,7 +381,8 @@ We based our method on the observation that different types of data are suitable
 We demonstrated the feasibility of our approach on the e-commerce example, where images were treated as input for clustering and textual descriptions of images as basis for cluster descriptions.
 
 %TODO Szymon pls check:
-In its current version, the system shows some adaptability to the needs of a human expert.
+%In its current version, the system shows some adaptability to the needs of a human expert.
+In its current version, adaptability to the needs of a human expert is provided by the possibility of cutomization of \textit{Metadata}.
 \textit{Metadata}-based explanations can be refined in two ways.
 The user can influence the number of tokens used in the explanation or can directly influence the list of tokens by adding words to the whitelist or blacklist.
 After each such change, the expert can see how it affects the classifier used as an explainer, both globally and at the level of random observations for a cluster.
@@ -394,7 +396,7 @@ For example, a product recommendation system in which the objective data would b
 The explanations could be refined by technical support of the platform before being shown to the e-store employee.
 The tool is intended for use by a sole data scientist.
 However, in other situations, collaborative knowledge engineering approaches are also possible.
-Metadata could be created and enhanced in systems such as LOKI\footnote{See: \url{https://loki.re/wiki/docs:start#loki}}~\cite{DBLP:conf/aiia/Kutt16}.
+Metadata could be created and enhanced in systems such as LOKI\footnote{See: \url{https://loki.re/wiki/docs:start\#loki}}~\cite{Kutt16}.
 
 %Our approach is obviously not new, but it is worth emphasizing if one wants to create useful solutions for machine learning practitioners.
 %We have developed a method that relates to the cluster analysis method, as this technique is widely used with a broad spectrum of applications in science, industry, business, and marketing.

@@ -1,7 +1,7 @@
 LATEX = latex
 DVIPS = dvips
 PSPDF = ps2pdf13 -sPAPERSIZE=a4 -dPDFSETTINGS=/prepress
-PAPERNAME = p_mmz2022ijcai-anonymous
+PAPERNAME = p_mmz2022ijcai-camera-ready
 OPTIONS = -shell-escape
 
 .PHONY: 	clean
