@@ -1,109 +1,110 @@
-%% The first command in your LaTeX source must be the \documentclass command.
-%%
-%% Options:
-%% twocolumn : Two column layout.
-%% hf: enable header and footer.
-\documentclass[
- twocolumn,
- hf,
-]{ceurart}
+%%%% ijcai22.tex
 
-%%
-%% One can fix some overfulls
-\sloppy
+\typeout{IJCAI--22 Instructions for Authors}
 
-%%
-%% Minted listings support 
-%% Need pygment <http://pygments.org/> <http://pypi.python.org/pypi/Pygments>
-\usepackage{lmodern}
-\usepackage{textcomp}
-\usepackage{listings}
-\usepackage{minted}
+% These are the instructions for authors for IJCAI-22.
 
-%% auto break lines
-\lstset{breaklines=true}
+\documentclass{article}
+\pdfpagewidth=8.5in
+\pdfpageheight=11in
+% The file ijcai22.sty is NOT the same as previous years'
+\usepackage{ijcai22}
 
-%%
-%% end of the preamble, start of the body of the document source.
-\begin{document}
+% Use the postscript times font!
+\usepackage{times}
+\usepackage{soul}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[small]{caption}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{booktabs}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\urlstyle{same}
 
-%%
-%% The "title" command
+% the following package is optional:
+%\usepackage{latexsym}
+
+% See https://www.overleaf.com/learn/latex/theorems_and_proofs
+% for a nice explanation of how to define new theorems, but keep
+% in mind that the amsthm package is already included in this
+% template and that you must *not* alter the styling.
+\newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+
+% Following comment is from ijcai97-submit.tex:
+% The preparation of these files was supported by Schlumberger Palo Alto
+% Research, AT\&T Bell Laboratories, and Morgan Kaufmann Publishers.
+% Shirley Jowell, of Morgan Kaufmann Publishers, and Peter F.
+% Patel-Schneider, of AT\&T Bell Laboratories collaborated on their
+% preparation.
+
+% These instructions can be modified and used in other conferences as long
+% as credit to the authors and supporting agencies is retained, this notice
+% is not changed, and further modification or reuse is not restricted.
+% Neither Shirley Jowell nor Peter F. Patel-Schneider can be listed as
+% contacts for providing assistance without their prior permission.
+
+% To use for other conferences, change references to files and the
+% conference appropriate and use other authors, contacts, publishers, and
+% organizations.
+% Also change the deadline and address for returning papers and the length and
+% page charge instructions.
+% Put where the files are available in the appropriate places.
+
+% PDF Info Is REQUIRED.
+% Please **do not** include Title and Author information
+\pdfinfo{
+/TemplateVersion (IJCAI.2022.0)
+}
+
 \title{Explain your clusters with words. The role of metadata in interactive clustering}
 
-%%
-%% The "author" command and its associated commands are used to define
-%% the authors and their affiliations.
-\author[1]{Maciej Mozolewski}[
-  orcid=0000-0003-4227-3894,
-  email=m.mozolewski@doctoral.uj.edu.pl,
-  url=https://github.com/mozo64,
-]
+% Single author syntax
+%\author{
+%    Author Name
+%    \affiliations
+%    Affiliation
+%    \emails
+%    pcchair@ijcai-22.org
+%}
 
-\author[2]{Samaneh Jamshidi}[
-  orcid=0000-0001-7055-2706,
-  email=samaneh.jamshidi@hh.se,
-]
+% Multiple author syntax (remove the single-author syntax above and the \iffalse ... \fi here)
+%\iffalse
+\author{
+Maciej Mozolewski$^1$
+\and
+Samaneh Jamshidi$^2$\and
+Szymon Bobek$^1$\And
+Grzegorz J. Nalepa$^1$
+\affiliations
+$^1$Jagiellonian Human-Centered Artificial Intelligence Laboratory (JAHCAI) and Institute of Applied Computer Science, Jagiellonian University, 31-007 Kraków, Poland\\
+$^2$Center for Applied Intelligent Systems Research (CAISR), Halmstad University, Halmstad, Sweden\\
+\emails
+m.mozolewski@doctoral.uj.edu.pl,
+samaneh.jamshidi@hh.se,
+\{szymon.bobek, grzegorz.j.nalepa\}@uj.edu.pl,
+}
+%\fi
 
-\author[1]{Szymon Bobek}[
-  orcid=0000-0002-6350-8405,
-  email=szymon.bobek@uj.edu.pl,
-]
+\begin{document}
 
-\author[1]{Grzegorz J. Nalepa}[
-  orcid=0000-0002-8182-4225,
-  email=grzegorz.j.nalepa@uj.edu.pl,
-]
-
-\address[1]{Jagiellonian Human-Centered Artificial Intelligence Laboratory (JAHCAI) and Institute of Applied Computer Science, Jagiellonian University, 31-007 Kraków, Poland}
-\address[2]{Center for Applied Intelligent Systems Research (CAISR), Halmstad University, Halmstad, Sweden}
-
-%%
-%% Rights management information.
-%% CC-BY is default license.
-\copyrightyear{2022}
-\copyrightclause{Copyright for this paper by its authors.
-Use permitted under Creative Commons License Attribution 4.0
-International (CC BY 4.0).}
-
-%%
-%% This command is for the conference information
-\conference{IJCAI-ECAI 2022, the 31st International Joint Conference on Artificial Intelligence and the 25th European Conference on Artificial Intelligence, July 23--29, 2022
-Messe Wien, Vienna, Austria}
-
-%\maketitle
-
-%%
-%% The abstract is a short summary of the work to be presented in the
-%% article.
-\begin{abstract}
-  In this preliminary work, we present an approach for augmentation of clustering with natural language explanations.
-  In clustering there are 2 main challenges: a) choice of a proper, reasonable number of clusters and b) cluster analysis and profiling.
-  There is a plethora of technics for a) but not so much for b), which is in general a laborious task of explaining obtained clusters.
-  %Clustering is in a sense art in that regard that it is an intuitive and iterative process. % This sentence is strange...
-  %Therefore, XAI techniques are well suited in this area.
-  In this work, we propose a method that aids experts in cluster analysis by providing iterative, human-in-the-loop methodology of generating cluster explanations.
-  In a convincing example, we show how the process of clustering on a set of \textit{objective variables} could be facilitated with textual \textit{metadata}.
-  In our case, images of products from online fashion store are used for clustering.
-  Then, product descriptions are used for profiling clusters.
-\end{abstract}
-
-%%
-%% Keywords. The author(s) should pick words that accurately describe
-%% the work being presented. Separate the keywords with commas.
-\begin{keywords}
-  XAI \sep
-  clustering \sep
-  metadata \sep
-  Natural Language Processing \sep
-  explanations \sep
-  narratives
-\end{keywords}
-
-%%
-%% This command processes the author and affiliation and title
-%% information and builds the first part of the formatted document.
 \maketitle
+
+\begin{abstract}
+    In this preliminary work, we present an approach for augmentation of clustering with natural language explanations.
+    In clustering there are 2 main challenges: a) choice of a proper, reasonable number of clusters and b) cluster analysis and profiling.
+    There is a plethora of technics for a) but not so much for b), which is in general a laborious task of explaining obtained clusters.
+    %Clustering is in a sense art in that regard that it is an intuitive and iterative process. % This sentence is strange...
+    %Therefore, XAI techniques are well suited in this area.
+    In this work, we propose a method that aids experts in cluster analysis by providing iterative, human-in-the-loop methodology of generating cluster explanations.
+    In a convincing example, we show how the process of clustering on a set of \textit{objective variables} could be facilitated with textual \textit{metadata}.
+    In our case, images of products from online fashion store are used for clustering.
+    Then, product descriptions are used for profiling clusters.
+\end{abstract}
 
 \section{Introduction}\label{sec:introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
@@ -159,7 +160,7 @@ Factory accounting data are \textit{metadata}.
 %Six-sigma quality standards lay somewhere in between of \textit{objective-subjective} continuum.
 
 %TODO Szymon pls check:
-%Going back to narratives, 
+%Going back to narratives,
 \textit{Objective data} can be viewed as story or the totality of facts that have occurred.
 They can be difficult for humans to understand but lend themselves well to clustering.
 \textit{Metadata}, in contrast, is more a type of narrative, or how the algorithm's outcome is presented by data scientists to their audience.
@@ -203,19 +204,19 @@ For textual data, users can provide the tool with blacklists of incorrect topic 
 Based on this signal, the clustering tool learns user preferences and tries to incorporate the knowledge in the next iteration.
 
 Explainable AI approaches have become particularly important, and although most work is generally focused on supervised learning, some works have been done to explain clusters.
-One of the most common methods for understanding clustering methods is visualization. 
-By using low-dimensionality embedding and displaying them in two- or three-dimensional dimensions, one can get an overview of the clusters and their data. 
-However, these visualizations are not always understandable and explainable. 
+One of the most common methods for understanding clustering methods is visualization.
+By using low-dimensionality embedding and displaying them in two- or three-dimensional dimensions, one can get an overview of the clusters and their data.
+However, these visualizations are not always understandable and explainable.
 
-The decision tree is one of the inherently interpretable algorithms. 
-So one common way to explain models is to use decision trees. 
-Nevertheless, the critical point for explaining the decision tree is its depth because decision trees with high depth no longer are interpreted, so we must pay attention to the depth of the tree produced. 
-Using a small decision tree to divide a dataset into k clusters provides explainable clusters, but this approach has a trade-off between being explainable and accuracy. 
+The decision tree is one of the inherently interpretable algorithms.
+So one common way to explain models is to use decision trees.
+Nevertheless, the critical point for explaining the decision tree is its depth because decision trees with high depth no longer are interpreted, so we must pay attention to the depth of the tree produced.
+Using a small decision tree to divide a dataset into k clusters provides explainable clusters, but this approach has a trade-off between being explainable and accuracy.
 IMM algorithm~\cite{dasgupta2020explainable} approximates k-means and k-median clustering by a threshold tree with k leaves.
 ExKMC~\cite{frost2020exkmc} uses a threshold tree to provide an explainable k-mean clustering in which the number of tree leaves is greater than the number of clusters.
 
 Besides, visualization or providing some conditions on features, using text data is reasonable to generate explanations to users.
-In~\cite{hendricks2016generating} authors use captions of the images along with the images to create a more discriminative classification. 
+In~\cite{hendricks2016generating} authors use captions of the images along with the images to create a more discriminative classification.
 In addition, they use this \textit{metadata} to provide language explanation and generate a text description for each class.
 However, by blending textual and image modalities into one datset, authors limit the possibility of checking consistency between these two types of data and implicitly assume the correctness of possibly wrong image descriptions.
 
@@ -289,10 +290,10 @@ To give our users a hint in this regard, we use the T-SNE~\cite{tsne} 2-dimensio
 At the moment, this is a solely visual clue.
 It is depicted in Figure~\ref{fig:tsne}.
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_57_1}
-  \caption{Preliminary visualisation of \textit{objective data} in 2-D projection with T-SNE dimensionality reduciton.}
-  \label{fig:tsne}
+    \centering
+    \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_57_1}
+    \caption{Preliminary visualisation of \textit{objective data} in 2-D projection with T-SNE dimensionality reduciton.}
+    \label{fig:tsne}
 \end{figure}
 If data have an underlying structure, points representing observations will cluster, which would be observed on the chart.
 As T-SNE on massive data could be resource intensive, the default is to run this process on random subsample and cache results.
@@ -300,10 +301,10 @@ Additionally, users can apply textual labels to the T-SNE chart, plotted on a su
 Labels could represent the most important pieces of \textit{metadata}, such as the label, the observation id, and summary of description.
 The next clue is derived from the silhouette score on a plot in the Figure~\ref{fig:silhouette}.
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=\linewidth]{silhouette-100}
-  \caption{Silhouette score with cluster counts and values.}
-  \label{fig:silhouette}
+    \centering
+    \includegraphics[width=\linewidth]{silhouette-100}
+    \caption{Silhouette score with cluster counts and values.}
+    \label{fig:silhouette}
 \end{figure}
 The range of the number of clusters to be tested is provided in accordance with the previous clue.
 To speed-up computations, this plot could be obtained on a random subset, and results are cached for further reference.
@@ -311,26 +312,26 @@ For now, the user interprets the plot on her/his own.
 Finally, clustering with k-means is performed on all observations.
 Visualization with T-SNE is presented, this time with clusters colored in different colors, which is depicted in Figure~\ref{fig:kmeans}.
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_59_0}
-  \caption{Preliminary visualisation of \textit{objective data} in 2-D projection with T-SNE dimensionality reduction. Colors denote clusters discovered with a usage of \textit{objective data}.}
-  \label{fig:kmeans}
+    \centering
+    \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_59_0}
+    \caption{Preliminary visualisation of \textit{objective data} in 2-D projection with T-SNE dimensionality reduction. Colors denote clusters discovered with a usage of \textit{objective data}.}
+    \label{fig:kmeans}
 \end{figure}
 
 \subsection{Interactive explanations}\label{subsec:interactive-explanations}
 %- then textual explanations follows straight away
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_22}
-  \caption{Example images of products that were assigned to the same cluster 13 based on the \textit{objective data}.}
-  \label{fig:example_products}
+    \centering
+    \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_22}
+    \caption{Example images of products that were assigned to the same cluster 13 based on the \textit{objective data}.}
+    \label{fig:example_products}
 \end{figure}
 
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_23}
-  \caption{Word cloud for a cluster of products presented in Fig.~\ref{fig:example_products} (cluster 13) generated with \textit{metadata}.}
-  \label{fig:wordcloud}
+    \centering
+    \includegraphics[width=\linewidth]{example1-clustering-products-fashion-tex/output_62_23}
+    \caption{Word cloud for a cluster of products presented in Fig.~\ref{fig:example_products} (cluster 13) generated with \textit{metadata}.}
+    \label{fig:wordcloud}
 \end{figure}
 
 The second step is to explain the clusters so that the person performing the data analysis can assess the result.
@@ -346,17 +347,17 @@ For instance for the cluster 13 in Figure~\ref{fig:example_products} one can see
 In this case one can see that the cluster 13 corresponds to product category "handbags".
 
 \begin{figure*}[h!]
-  \centering
-  \includegraphics[width=0.8\textwidth]{tree-improved}
-  \caption{Decision tree classifier which explains how clusters differ in terms of \textit{metadata}, here pruned to level 4.}
-  \label{fig:decision_tree}
+    \centering
+    \includegraphics[width=0.8\textwidth]{tree-improved}
+    \caption{Decision tree classifier which explains how clusters differ in terms of \textit{metadata}, here pruned to level 4.}
+    \label{fig:decision_tree}
 \end{figure*}
 
 \begin{figure*}[h!]
-  \centering
-  \includegraphics[width=0.8\textwidth]{example1-clustering-products-fashion-tex/LIME_13_handbags-Selection_265}
-  \caption{LIME explanation for a random observation drawn from the cluster 13.}
-  \label{fig:lime}
+    \centering
+    \includegraphics[width=0.8\textwidth]{example1-clustering-products-fashion-tex/LIME_13_handbags-Selection_265}
+    \caption{LIME explanation for a random observation drawn from the cluster 13.}
+    \label{fig:lime}
 \end{figure*}
 
 The last stage is a plot of the word cloud of each cluster, using the same Tf-Idf vectorizer.
@@ -392,13 +393,13 @@ One can modify the scope of the \textit{metadata} and the way individual observa
 If the results, despite the changes, are not satisfactory, it may imply the need to go back to choosing the number of clusters.
 
 %TODO Szymon pls check:
-We treat \textit{metadata} as something given.
+We treat metadata as something given.
 From our experience in e-commerce, we know that product descriptions are the result of the work of many e-store employees, but we do not want to interfere with them.
 For example, a product recommendation system in which the objective data would be product images and the online shopping behavior would be swithced on for a particular e-commerce after the explanation is accepted by a decision maker in the e-store.
 The explanations could be refined by technical support of the platform before being shown to the e-store employee.
 The tool is intended for use by a sole data scientist.
 However, in other situations, collaborative knowledge engineering approaches are also possible.
-\textit{Metadata} could be created and enhanced in systems such as LOKI\footnote{See: \url{https://loki.re/wiki/docs:start\#loki}}~\cite{Kutt16}.
+Metadata could be created and enhanced in systems such as LOKI\footnote{See: \url{https://loki.re/wiki/docs:start\#loki}}~\cite{Kutt16}.
 
 %Our approach is obviously not new, but it is worth emphasizing if one wants to create useful solutions for machine learning practitioners.
 %We have developed a method that relates to the cluster analysis method, as this technique is widely used with a broad spectrum of applications in science, industry, business, and marketing.
@@ -418,22 +419,22 @@ It could be done for instance with image captioning.
 %We are already working on applications of the tool
 %- e-commerce: customer segmentation, SEO
 %-
+\section*{Acknowledgments}
+%\begin{acknowledgments}
+This paper is funded from the XPM (Explainable Predictive Maintenance) project funded by the National Science Center, Poland under CHIST-ERA programme Grant Agreement No. 857925 (NCN UMO-2020/02/Y/ST6/00070).
 
-\begin{acknowledgments}
-  This paper is funded from the XPM (Explainable Predictive Maintenance) project funded by the National Science Center, Poland under CHIST-ERA programme Grant Agreement No. 857925 \\ (NCN UMO-2020/02/Y/ST6/00070).
+The work of Szymon Bobek has been additionally supported by a HuLCKA grant from the Priority Research Area (Digiworld) under the Strategic Programme Excellence Initiative at the Jagiellonian University (U1U/P06/NO/02.16).
 
-  The work of Szymon Bobek has been additionally supported by a HuLCKA grant from the Priority Research Area (Digiworld) under the Strategic Programme Excellence Initiative at the Jagiellonian University (U1U/P06/NO/02.16).
+The work of Samaneh Jamshidi was supported by CHIST-ERA grant CHIST-ERA-19-XAI-012 funded by Swedish Research Council.
 
-  The work of Samaneh Jamshidi was supported by CHIST-ERA grant CHIST-ERA-19-XAI-012 funded by Swedish Research Council.
+%TODO Szymon pls check:
+The work of Maciej Mozolewski has been additionally supported by Edrone Sp. z o.o.\footnote{See: \url{https://edrone.me/en/}}, which provided computer resources for machine learning.
+%\end{acknowledgments}
 
-  %TODO Szymon pls check:
-  The work of Maciej Mozolewski has been additionally supported by Edrone Sp. z o.o.\footnote{See: \url{https://edrone.me/en/}}, which provided computer resources for machine learning.
-\end{acknowledgments}
 
-%%
-%% Define the bibliography file to be used
-\bibliography{sample-ceur}
+%% The file named.bst is a bibliography style file for BibTeX 0.99c
+\bibliographystyle{named}
+\bibliography{ijcai22}
+
 \end{document}
 
-%%
-%% End of file
