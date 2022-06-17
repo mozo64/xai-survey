@@ -108,6 +108,7 @@ Messe Wien, Vienna, Austria}
 \section{Introduction}\label{sec:introduction}
 %In general what is the prroblem -- in clustering we need to analyse results, XAI can help us in doing that
 %- classification as a tool for understanding
+%TODO Szymon pls check:
 Data analysts and data scientists are often faced with the task of describing phenomena in a way that is understandable to the audience.
 On the one hand, they have some data that they can describe statistically, categorize, or predict events based on it, etc.
 On the other hand, they want to deliver their observations in some kind of narrative that they can "sell" to decision-makers.
@@ -154,6 +155,8 @@ The categories, titles and descriptions of the products form \textit{metadata}, 
 For rolling steel factories, predictive maintenance models are derived mainly from \textit{objective sensory data}, such as temperature, force, etc.
 Factory accounting data are \textit{metadata}.
 %Six-sigma quality standards lay somewhere in between of \textit{objective-subjective} continuum.
+
+%TODO Szymon pls check:
 Going back to narratives, \textit{objective data} can be viewed as story or the totality of facts that have occurred.
 They can be difficult for humans to understand but lend themselves well to clustering.
 \textit{Metadata}, in contrast, is more a type of narrative, or how the algorithm's outcome is presented by data scientists to their audience.
@@ -376,12 +379,22 @@ In this work, we presented the method that allows for explaining clusters with c
 We based our method on the observation that different types of data are suitable in different degrees to clustering and explaining tasks.
 We demonstrated the feasibility of our approach on the e-commerce example, where images were treated as input for clustering and textual descriptions of images as basis for cluster descriptions.
 
+%TODO Szymon pls check:
 In its current version, the system shows some adaptability to the needs of a human expert.
 \textit{Metadata}-based explanations can be refined in two ways.
 The user can influence the number of tokens used in the explanation or can directly influence the list of tokens by adding words to the whitelist or blacklist.
 After each such change, the expert can see how it affects the classifier used as an explainer, both globally and at the level of random observations for a cluster.
 One can modify the scope of the \textit{metadata} and the way individual observations are presented.
 If the results, despite the changes, are not satisfactory, it may imply the need to go back to choosing the number of clusters.
+
+%TODO Szymon pls check:
+We treat metadata as something given.
+From our experience in e-commerce, we know that product descriptions are the result of the work of many e-store employees, but we do not want to interfere with them.
+For example, a product recommendation system in which the objective data would be product images and the online shopping behavior would be swithced on for a particular e-commerce after the explanation is accepted by a decision maker in the e-store.
+The explanations could be refined by technical support of the platform before being shown to the e-store employee.
+The tool is intended for use by a sole data scientist.
+However, in other situations, collaborative knowledge engineering approaches are also possible.
+Metadata could be created and enhanced in systems such as LOKI\footnote{See: \url{https://loki.re/wiki/docs:start#loki}}~\cite{DBLP:conf/aiia/Kutt16}.
 
 %Our approach is obviously not new, but it is worth emphasizing if one wants to create useful solutions for machine learning practitioners.
 %We have developed a method that relates to the cluster analysis method, as this technique is widely used with a broad spectrum of applications in science, industry, business, and marketing.
@@ -398,7 +411,6 @@ Word clouds could be replaced with topic analysis with Latent Dirichlet Allocati
 Another interesting direction is to construct explanations with other modalities, like visual, by something more sophisticated than presenting example images.
 It could be done for instance with image captioning.
 
-
 %We are already working on applications of the tool
 %- e-commerce: customer segmentation, SEO
 %-
@@ -409,7 +421,7 @@ It could be done for instance with image captioning.
   The work of Szymon Bobek has been additionally supported by a HuLCKA grant from the Priority Research Area (Digiworld) under the Strategic Programme Excellence Initiative at the Jagiellonian University (U1U/P06/NO/02.16).
 
   The work of Samaneh Jamshidi was supported by CHIST-ERA grant CHIST-ERA-19-XAI-012 funded by Swedish Research Council.
-
+  %TODO Szymon pls check:
   The work of Maciej Mozolewski has been additionally supported by Edrone Sp. z o.o.\footnote{See: \url{https://edrone.me/en/}}, which provided computer resources for machine learning.
 \end{acknowledgments}
 
