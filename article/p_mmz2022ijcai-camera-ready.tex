@@ -376,6 +376,13 @@ In this work, we presented the method that allows for explaining clusters with c
 We based our method on the observation that different types of data are suitable in different degrees to clustering and explaining tasks.
 We demonstrated the feasibility of our approach on the e-commerce example, where images were treated as input for clustering and textual descriptions of images as basis for cluster descriptions.
 
+In its current version, the system shows some adaptability to the needs of a human expert.
+\textit{Metadata}-based explanations can be refined in two ways.
+The user can influence the number of tokens used in the explanation or can directly influence the list of tokens by adding words to the whitelist or blacklist.
+After each such change, the expert can see how it affects the classifier used as an explainer, both globally and at the level of random observations for a cluster.
+One can modify the scope of the \textit{metadata} and the way individual observations are presented.
+If the results, despite the changes, are not satisfactory, it may imply the need to go back to choosing the number of clusters.
+
 %Our approach is obviously not new, but it is worth emphasizing if one wants to create useful solutions for machine learning practitioners.
 %We have developed a method that relates to the cluster analysis method, as this technique is widely used with a broad spectrum of applications in science, industry, business, and marketing.
 %Furthermore, it is easy to show that it is actually a technical extension of the natural process of describing reality.
